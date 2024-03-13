@@ -1,0 +1,69 @@
+Description: SPO Triage collections that will collect most of the files needed for a DFIR Investigation.
+Author: ParkSeongJae
+Version: 1.1
+Id: 98355f54-adb6-46cc-b193-70580a2e7733
+RecreateDirectories: true
+Targets:
+    -
+        Name: EventLogs
+        Category: Targets
+        Path: EventLogs.tkape
+    -
+        Name: FileSystem
+        Category: Targets
+        Path: FileSystem.tkape
+    -
+        Name: LNKFilesAndJumpLists
+        Category: Targets
+        Path: LNKFilesAndJumpLists.tkape
+    -
+        Name: Scheduledtasks
+        Category: Targets
+        Path: ScheduledTasks.tkape
+    -
+        Name: RegistryHives
+        Category: Targets
+        Path: RegistryHives.tkape
+    -
+        Name: Amcache
+        Category: Targets
+        Path: Amcache.tkape
+    -
+        Name: SRUM
+        Category: Targets
+        Path: SRUM.tkape
+    -
+        Name: LNK Files and jump lists
+        Category: Targets
+        Path: LNKFilesAndJumpLists.tkape
+    -
+        Name: WebBrowsers
+        Category: Targets
+        Path: WebBrowsers.tkape
+    -
+        Name: WindowsTimeline
+        Category: Targets
+        Path: WindowsTimeline.tkape
+    -
+        Name: Prefetch
+        Category: Targets
+        Path: Prefetch.tkape
+    -
+        Name: RecycleBin_InfoFiles
+        Category: Targets
+        Path: RecycleBin_InfoFiles.tkape
+    -
+        Name: RecycleBin_DataFiles
+        Category: Targets
+        Path: RecycleBin_DataFiles.tkape
+    -
+        Name: EvidenceOfExecution
+        Category: Targets
+        Path: EvidenceOfExecution.tkape
+    -
+        Name: RecentFileCache
+        Category: Targets
+        Path: RecentFileCache.tkape
+
+# Documentation
+# N/A

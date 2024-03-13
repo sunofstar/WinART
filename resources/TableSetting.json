@@ -1,0 +1,389 @@
+{
+  "EventLogs": [
+    {
+      "filename": "_evtxecmd_output.csv",
+      "tablename": "EvtxECmd_Output",
+      "_category_1": "EventLogs",
+      "_category_2": "이벤트로그",
+      "_category_3": "이벤트로그",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ],
+  "FileDeletion": [
+    {
+      "filename": "_rbcmd_output.csv",
+      "tablename": "RBCmd_Output",
+      "_category_1": "FileDeletion",
+      "_category_2": "휴지통",
+      "_category_3": "휴지통",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ],
+  "BrowsingHistory": [
+    {
+      "filename": "browsinghistory.csv",
+      "tablename": "BrowsingHistory",
+      "_category_1": "BrowsingHistory",
+      "_category_2": "웹기록",
+      "_category_3": "BrowsingHistory",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ],
+  "FileFolderAccess": [
+    {
+      "filename": "_automaticdestinations.csv",
+      "tablename": "AutomaticDestinations",
+      "_category_1": "FileFolderAccess",
+      "_category_2": "점프리스트",
+      "_category_3": "AutomaticDestinations",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_customdestinations.csv",
+      "tablename": "CustomDestinations",
+      "_category_1": "FileFolderAccess",
+      "_category_2": "점프리스트",
+      "_category_3": "CustomDestinations",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_lecmd_output.csv",
+      "_category_1": "FileFolderAccess",
+      "tablename": "LECmd_Output",
+      "_category_2": "링크파일",
+      "_category_3": "링크파일",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "(\\S+)_ntuser.csv",
+      "tablename": "NTUSER",
+      "_category_1": "FileFolderAccess",
+      "_category_2": "Shellbag",
+      "_category_3": "NTUSER",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "(\\S+)_usrclass.csv",
+      "tablename": "UsrClass",
+      "_category_1": "FileFolderAccess",
+      "_category_2": "Shellbag",
+      "_category_3": "UsrClass",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_(\\S+)_activity.csv",
+      "tablename": "Activity",
+      "_category_1": "FileFolderAccess",
+      "_category_2": "윈도우타임라인",
+      "_category_3": "Activity",
+      "csvfilename": "",
+      "match": "regex"
+    }
+  ],
+  "Amcache": [
+    {
+      "filename": "_amcache_associatedfileentries.csv",
+      "tablename": "Amcache_AssociatedFileEntries",
+      "_category_1": "Amcache",
+      "_category_2": "프로그램실행",
+      "_category_3": "AssociatedFileEntries",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_devicecontainers.csv",
+      "tablename": "Amcache_DeviceContainers",
+      "_category_1": "Amcache",
+      "_category_2": "장치흔적",
+      "_category_3": "DeviceContainers",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_devicepnps.csv",
+      "tablename": "Amcache_DevicePnps",
+      "_category_1": "Amcache",
+      "_category_2": "장치흔적",
+      "_category_3": "DevicePnps",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_drivebinaries.csv",
+      "tablename": "Amcache_DriveBinaries",
+      "_category_1": "Amcache",
+      "_category_2": "장치흔적",
+      "_category_3": "DriveBinaries",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_driverpackages.csv",
+      "tablename": "Amcache_DriverPackages",
+      "_category_1": "Amcache",
+      "_category_2": "장치흔적",
+      "_category_3": "DriverPackages",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_programentries.csv",
+      "tablename": "Amcache_ProgramEntries",
+      "_category_1": "Amcache",
+      "_category_2": "프로그램실행",
+      "_category_3": "ProgramEntries",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_shortcuts.csv",
+      "tablename": "Amcache_ShortCuts",
+      "_category_1": "Amcache",
+      "_category_2": "프로그램실행",
+      "_category_3": "ShortCuts",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_amcache_unassociatedfileentries.csv",
+      "tablename": "Amcache_UnassociatedFileEntries",
+      "_category_1": "Amcache",
+      "_category_2": "프로그램실행",
+      "_category_3": "UnassociatedFileEntries",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ],
+  "ProgramExecution": [
+    {
+      "filename": "_pecmd_output.csv",
+      "tablename": "PECmd_Output",
+      "_category_1": "ProgramExecution",
+      "_category_2": "Prefetch",
+      "_category_3": "PECmd_Output",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_pecmd_output_timeline.csv",
+      "tablename": "PECmd_Output_Timeline",
+      "_category_1": "ProgramExecution",
+      "_category_2": "Prefetch",
+      "_category_3": "PECmd_Timeline",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ],
+  "FileSystem": [
+    {
+      "filename": "_mftecmd_$mft_output.csv",
+      "tablename": "MFTECmd_MFT_Output",
+      "_category_1": "FileSystem",
+      "_category_2": "MFT",
+      "_category_3": "MFTECmd_MFT",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "nlt_logfile_(\\d{4})\\-(\\d{2})\\-(\\d{2}) (\\d{2})-(\\d{2})-(\\d{2}).csv",
+      "tablename": "NLT_LogFile",
+      "_category_1": "FileSystem",
+      "_category_2": "LogFile",
+      "_category_3": "NLT_LogFile",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "nlt_usnjrnl_(\\d{4})\\-(\\d{2})\\-(\\d{2}) (\\d{2})-(\\d{2})-(\\d{2}).csv",
+      "tablename": "NLT_UsnJrnl",
+      "_category_1": "FileSystem",
+      "_category_2": "Jrnl",
+      "_category_3": "NLT_UsnJrnl",
+      "csvfilename": "",
+      "match": "regex"
+    }
+  ],
+  "Registry": [
+    {
+      "filename": "_recmd_batch_basicsysteminfo_output.csv",
+      "tablename": "RECmd_Batch_BasicSystemInfo_Output",
+      "_category_1": "Registry",
+      "_category_2": "SystemInformation",
+      "_category_3": "SystemInformation",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_userassist__(\\S+)_users_(\\S+)_ntuser.dat.csv",
+      "tablename": "UserAssist___Users__NTUSER_DAT",
+      "_category_1": "Registry",
+      "_category_2": "프로그램실행",
+      "_category_3": "UserAssist",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_bamdam__(\\S+)_windows_system32_config_system.csv",
+      "tablename": "BamDam___Windows_System32_config_SYSTEM",
+      "_category_1": "Registry",
+      "_category_2": "프로그램실행",
+      "_category_3": "BamDam",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_useraccounts__(\\S+)_windows_system32_config_sam.csv",
+      "tablename": "UserAccounts___Windows_System32_config_SAM",
+      "_category_1": "Registry",
+      "_category_2": "사용자계정",
+      "_category_3": "사용자계정",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_timezoneinfo__(\\S+)_windows_system32_config_system.csv",
+      "tablename": "TimeZoneInfo___Windows_System32_config_SYSTEM",
+      "_category_1": "Registry",
+      "_category_2": "Timezone",
+      "_category_3": "TimeZoneInfo",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_usb__(\\S+)_windows_system32_config_system.csv",
+      "tablename": "USB___Windows_System32_config_SYSTEM",
+      "_category_1": "Registry",
+      "_category_2": "장치흔적",
+      "_category_3": "USB_WinArtifacts",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_usbstor__(\\S+)_windows_system32_config_system.csv",
+      "tablename": "USBSTOR___Windows_System32_config_SYSTEM",
+      "_category_1": "Registry",
+      "_category_2": "장치흔적",
+      "_category_3": "USBSTOR_WinArtifacts",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_scsi__(\\S+)_windows_system32_config_system.csv",
+      "tablename": "SCSI___Windows_System32_config_SYSTEM",
+      "_category_1": "Registry",
+      "_category_2": "장치흔적",
+      "_category_3": "SCSI_WinArtifacts",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_deviceclasses__(\\S+)_windows_system32_config_system.csv",
+      "tablename": "DeviceClasses___Windows_System32_config_SYSTEM",
+      "_category_1": "Registry",
+      "_category_2": "장치흔적",
+      "_category_3": "DeviceClasses",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_recentdocs__(\\S+)_users_(\\S+)_ntuser.dat.csv",
+      "tablename": "RecentDocs___Users__NTUSER_DAT",
+      "_category_1": "Registry",
+      "_category_2": "파일폴더접근",
+      "_category_3": "RecentDocs",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_opensavepidlmru__(\\S+)_users_(\\S+)_ntuser.dat.csv",
+      "tablename": "OpenSavePidlMRU___Users__NTUSER_DAT",
+      "_category_1": "Registry",
+      "_category_2": "파일폴더접근",
+      "_category_3": "OpenSavePidlMRU",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_lastvisitedpidlmru__(\\S+)_users_(\\S+)_ntuser.dat.csv",
+      "tablename": "LastVisitedPidlMRU___Users__NTUSER_DAT",
+      "_category_1": "Registry",
+      "_category_2": "파일폴더접근",
+      "_category_3": "LastVisitedPidlMRU",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_knownnetworks__(\\S+)_windows_system32_config_software.csv",
+      "tablename": "KnownNetworks___Windows_System32_config_SOFTWARE",
+      "_category_1": "Registry",
+      "_category_2": "네트워크",
+      "_category_3": "KnownNetworks",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_wordwheelquery__(\\S+)_users_(\\S+)_ntuser.dat.csv",
+      "tablename": "WordWheelQuery___Users__NTUSER_DAT",
+      "_category_1": "Registry",
+      "_category_2": "입력_또는_검색",
+      "_category_3": "WordWheelQuery",
+      "csvfilename": "",
+      "match": "regex"
+    },
+    {
+      "filename": "_recmd_batch_installedsoftware_output.csv",
+      "tablename": "RECmd_Batch_InstalledSoftware_Output",
+      "_category_1": "Registry",
+      "_category_2": "설치목록",
+      "_category_3": "RECmd_Batch",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_recmd_batch_spo_all_execute_command_output.csv",
+      "tablename": "RECmd_Batch_SPO_All_Execute_Command_Output",
+      "_category_1": "-",
+      "_category_2": "-",
+      "_category_3": "-",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ],
+  "SRUMDatabase": [
+    {
+      "filename": "_srumecmd_appresourceuseinfo_output.csv",
+      "tablename": "SrumECmd_AppResourceUseInfo_Output",
+      "_category_1": "SRUMDatabase",
+      "_category_2": "프로그램실행",
+      "_category_3": "AppResourceUseInfo",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_srumecmd_networkconnections_output.csv",
+      "tablename": "SrumECmd_NetworkConnections_Output",
+      "_category_1": "SRUMDatabase",
+      "_category_2": "네트워크",
+      "_category_3": "NetworkConnections",
+      "csvfilename": "",
+      "match": "string"
+    },
+    {
+      "filename": "_srumecmd_networkusages_output.csv",
+      "tablename": "SrumECmd_NetworkUsages_Output",
+      "_category_1": "SRUMDatabase",
+      "_category_2": "네트워크",
+      "_category_3": "NetworkUsages",
+      "csvfilename": "",
+      "match": "string"
+    }
+  ]
+}

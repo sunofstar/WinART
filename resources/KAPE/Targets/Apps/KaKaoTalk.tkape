@@ -1,0 +1,15 @@
+Description: KaKaoTalk folder copy
+Author: sjpark
+Version: 1.0
+Id: 65194c0a-a161-4627-8b07-4d1aac327cf5
+RecreateDirectories: true
+Targets:
+    -
+        Name: KaKaoTalk
+        Category: Apps
+        Path: C:\Users\%user%\AppData\Local\Kakao\KakaoTalk
+        Recursive: true
+        FileMask: "*"
+        Comment: "KaKAoTalk folder"
+
+# Documentation

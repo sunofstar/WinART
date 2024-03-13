@@ -1,0 +1,72 @@
+.q-checkbox {
+  &.disabled {
+    .q-checkbox__bg {
+      border-color: grey !important;
+      background-color: $grey-8;
+      .q-checkbox__svg {
+        color: grey;
+      }
+    }
+  }
+  &--dark .q-checkbox__inner {
+    color: #ffffff;
+  }
+  &--dark .q-checkbox__inner--truthy {
+    color: $primary;
+  }
+}
+
+.q-field--dark {
+  .q-field__control:before {
+    background-color: #202428;
+    border-color: #56585a;
+  }
+  &.q-field--disabled,
+  &.q-field--readonly {
+    .q-field__control:before {
+      color: #999;
+      background-color: #363a3c;
+    }
+  }
+}
+
+.q-tabs {
+  .q-tab {
+    border-right-color: #0a141e;
+  }
+  .q-tab--active {
+    background-image: linear-gradient(0deg, rgba(0, 220, 255, 0.4) 0%, rgba(0, 220, 255, 0.04) 100%) !important;
+  }
+  &.tab-result {
+    .q-tab {
+      color: #999;
+      background: #1e2022;
+    }
+    .q-tab--active {
+      color: #fff;
+      background: linear-gradient(0deg, rgba(20, 215, 200, 0.5) 0%, rgba(20, 215, 200, 0.15) 100%) !important;
+    }
+    &.oa-header {
+      border-color: #1e2022;
+      .q-tab {
+        &--inactive {
+          background: rgba(245, 250, 255, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.q-tab-panels {
+  border-radius: 0;
+  background: rgba(245, 250, 255, 0.2);
+  .result-tree {
+    .q-tree--dark {
+      background: rgba(245, 250, 255, 0.2);
+      min-height: 100%;
+    }
+  }
+  &.oa-container {
+    background-color: rgba(10, 20, 30, 0.2);
+  }
+}

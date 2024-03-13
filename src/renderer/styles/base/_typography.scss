@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  src: url('@renderer/assets/fonts/NotoSansKR-Regular.woff2') format('woff2'),
+    url('@renderer/assets/fonts/NotoSansKR-Regular.woff') format('woff'),
+    url('@renderer/assets/fonts/NotoSansKR-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  src: url('@renderer/assets/fonts/NotoSansKR-Bold.woff2') format('woff2'),
+    url('@renderer/assets/fonts/NotoSansKR-Bold.woff') format('woff'),
+    url('@renderer/assets/fonts/NotoSansKR-Bold.otf') format('opentype');
+}
+
+html,
+body,
+input,
+select,
+button,
+textarea {
+  font-family: 'Noto Sans KR', 'Noto Sans CJK KR', 'Noto Sans', 'New Roboto', 'Roboto', sans-serif !important;
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: 700 !important;
+  margin: 0;
+  padding: 0;
+  .q-icon {
+    font-size: 2.25rem;
+    margin: 0 0.5rem 0.125rem 0;
+  }
+}
+
+h2 {
+  color: $info;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  line-height: 2.5rem !important;
+  margin: 0;
+  flex-grow: 1;
+}
+
+h3 {
+  color: $primary;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.875rem !important;
+  margin: 0;
+  /*flex-grow: 1;*/
+}
+
+h4 {
+  color: currentColor;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  line-height: 1.875rem !important;
+  margin: 0;
+}
+
+.w-space-nowrap {
+  white-space: nowrap;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.null-value {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+// .text-body-1 {
+//   font-size: 1rem;
+//   line-height: 1.5;
+// }
+
+// .text-body-2 {
+//   font-size: 0.9375rem;
+//   line-height: 1.6;
+// }
+
+.text-lg-1 {
+  font-size: 1.5rem;
+}
+.text-lg-2 {
+  font-size: 1.25rem;
+}
+.text-lg-3 {
+  font-size: 1.125rem;
+}
+.text-md-1 {
+  font-size: 1rem;
+}
+.text-md-2 {
+  font-size: 0.9375rem;
+}
+.text-md-3 {
+  font-size: 0.875rem;
+}
+.text-sm-1 {
+  font-size: 0.8125rem;
+}
+.text-sm-2 {
+  font-size: 0.75rem;
+}
+
+.bold {
+  font-weight: 700;
+}

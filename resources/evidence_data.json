@@ -1,0 +1,176 @@
+{
+    "ART_TBL": [
+        {
+            "table_name": "EvtxECmd_Output",
+            "select2": "a_id, RecordNumber, EventRecordId, TimeCreated, EventId, Level, Provider, Channel, ProcessId, ThreadId, Computer, ChunkNumber, UserId, MapDescription, UserName, RemoteHost, PayloadData1, PayloadData2, PayloadData3, PayloadData4, PayloadData5, PayloadData6, ExecutableInfo, HiddenRecord, SourceFile, Keywords, ExtraDataOffset, Payload"
+        },
+        {
+            "table_name": "RBCmd_Output",
+            "select2": "a_id, FileName, DeletedOn, FileSize, SourceName, FileType"
+        },
+        {
+            "table_name": "BrowsingHistory",
+            "select2": "a_id, URL, Title, \"Visit Time\", \"Visit Count\", \"Visited From\", \"Visit Type\", \"Web Browser\", \"User Profile\", \"Browser Profile\", \"URL Length\", \"Typed Count\", \"History File\", \"Record ID\""
+        },
+        {
+            "table_name": "AutomaticDestinations",
+            "select2": "a_id, CreationTime, LastModified, Hostname, MacAddress, Path, InteractionCount, PinStatus, FileBirthDroid, FileDroid, VolumeBirthDroid, VolumeDroid, TargetCreated, TargetModified, TargetAccessed, FileSize, RelativePath, WorkingDirectory, FileAttributes, HeaderFlags, DriveType, VolumeSerialNumber, VolumeLabel, LocalPath, CommonPath, TargetIDAbsolutePath, TargetMFTEntryNumber, TargetMFTSequenceNumber, MachineID, MachineMACAddress, TrackerCreatedOn, ExtraBlocksPresent, Arguments, Notes, SourceFile, SourceCreated, SourceModified, SourceAccessed, AppId, AppIdDescription, DestListVersion, LastUsedEntryNumber, MRU, EntryNumber"
+        },
+        {
+            "table_name": "CustomDestinations",
+            "select2": "a_id, AppId, AppIdDescription, EntryName, TargetCreated, TargetModified, TargetAccessed, FileSize, RelativePath, WorkingDirectory, FileAttributes, HeaderFlags, DriveType, VolumeSerialNumber, VolumeLabel, LocalPath, CommonPath, TargetIDAbsolutePath, TargetMFTEntryNumber, TargetMFTSequenceNumber, MachineID, MachineMACAddress, TrackerCreatedOn, ExtraBlocksPresent, Arguments, SourceFile, SourceCreated, SourceModified, SourceAccessed"
+        },
+        {
+            "table_name": "LECmd_Output",
+            "select2": "a_id, SourceCreated, SourceModified, SourceAccessed, TargetCreated, TargetModified, TargetAccessed, FileSize, RelativePath, WorkingDirectory, FileAttributes, HeaderFlags, DriveType, VolumeSerialNumber, VolumeLabel, LocalPath, NetworkPath, CommonPath, Arguments, TargetIDAbsolutePath, TargetMFTEntryNumber, TargetMFTSequenceNumber, MachineID, MachineMACAddress, MACVendor, TrackerCreatedOn, ExtraBlocksPresent, SourceFile"
+        },
+        {
+            "table_name": "NTUSER",
+            "select2": "a_id, Slot, NodeSlot, MRUPosition, ShellType, Value, ChildBags, CreatedOn, ModifiedOn, AccessedOn, LastWriteTime, MFTEntry, MFTSequenceNumber, ExtensionBlockCount, FirstInteracted, LastInteracted, HasExplored, Miscellaneous, AbsolutePath, BagPath"
+        },
+        {
+            "table_name": "UsrClass",
+            "select2": "a_id, Slot, NodeSlot, MRUPosition, ShellType, Value, ChildBags, CreatedOn, ModifiedOn, AccessedOn, LastWriteTime, MFTEntry, MFTSequenceNumber, ExtensionBlockCount, FirstInteracted, LastInteracted, HasExplored, Miscellaneous, AbsolutePath, BagPath"
+        },
+        {
+            "table_name": "Activity",
+            "select2": "a_id, Id, ActivityTypeOrg, ActivityType, Executable, DisplayText, ContentInfo, Payload, ClipboardPayload, StartTime, EndTime, Duration, LastModifiedTime, LastModifiedOnClient, OriginalLastModifiedOnClient, ExpirationTime, CreatedInCloud, IsLocalOnly, ETag, PackageIdHash, PlatformDeviceId, DevicePlatform, TimeZone"
+        },
+        {
+            "table_name": "Amcache_AssociatedFileEntries",
+            "select2": "a_id, ApplicationName, ProgramId, FileKeyLastWriteTimestamp, SHA1, IsOsComponent, FullPath, Name, FileExtension, LinkDate, ProductName, Size, Version, ProductVersion, LongPathHash, BinaryType, IsPeFile, BinFileVersion, BinProductVersion, Usn, Language, Description"
+        },
+        {
+            "table_name": "Amcache_DeviceContainers",
+            "select2": "a_id, KeyName, KeyLastWriteTimestamp, Categories, DiscoveryMethod, FriendlyName, Icon, IsActive, IsConnected, IsMachineContainer, IsNetworked, IsPaired, Manufacturer, ModelId, ModelName, ModelNumber, PrimaryCategory, State"
+        },
+        {
+            "table_name": "Amcache_DevicePnps",
+            "select2": "a_id, KeyName, KeyLastWriteTimestamp, BusReportedDescription, Class, ClassGuid, Compid, ContainerId, Description, DriverId, DriverPackageStrongName, DriverName, DriverVerDate, DriverVerVersion, Enumerator, HWID, Inf, InstallState, Manufacturer, MatchingId, Model, ParentId, ProblemCode, Provider, Service, Stackid"
+        },
+        {
+            "table_name": "Amcache_DriveBinaries",
+            "select2": "a_id, KeyName, KeyLastWriteTimestamp, DriverTimeStamp, DriverLastWriteTime, DriverName, DriverInBox, DriverIsKernelMode, DriverSigned, DriverCheckSum, DriverCompany, DriverId, DriverPackageStrongName, DriverType, DriverVersion, ImageSize, Inf, Product, ProductVersion, Service, WdfVersion"
+        },
+        {
+            "table_name": "Amcache_DriverPackages",
+            "select2": "a_id, KeyName, KeyLastWriteTimestamp, Date, Class, Directory, DriverInBox, Hwids, Inf, Provider, SubmissionId, SYSFILE, Version"
+        },
+        {
+            "table_name": "Amcache_ProgramEntries",
+            "select2": "a_id, ProgramId, KeyLastWriteTimestamp, Name, Version, Publisher, InstallDateArpLastModified, InstallDate, InstallDateMsi, OSVersionAtInstallTime, InstallDateFromLinkFile, BundleManifestPath, HiddenArp, InboxModernApp, Language, ManifestPath, MsiPackageCode, MsiProductCode, PackageFullName, ProgramInstanceId, RegistryKeyPath, RootDirPath, Type, Source, StoreAppType, UninstallString, Manufacturer"
+        },
+        {
+            "table_name": "Amcache_ShortCuts",
+            "select2": "a_id, KeyName, LnkName, KeyLastWriteTimestamp"
+        },
+        {
+            "table_name": "Amcache_UnassociatedFileEntries",
+            "select2": "a_id, ApplicationName, ProgramId, FileKeyLastWriteTimestamp, SHA1, IsOsComponent, FullPath, Name, FileExtension, LinkDate, ProductName, Size, Version, ProductVersion, LongPathHash, BinaryType, IsPeFile, BinFileVersion, BinProductVersion, Usn, Language, Description"
+        },
+        {
+            "table_name": "PECmd_Output",
+            "select2": "a_id, Note, SourceFilename, SourceCreated, SourceModified, SourceAccessed, ExecutableName, Hash, Size, Version, RunCount, LastRun, PreviousRun0, PreviousRun1, PreviousRun2, PreviousRun3, PreviousRun4, PreviousRun5, PreviousRun6, Volume0Name, Volume0Serial, Volume0Created, Volume1Name, Volume1Serial, Volume1Created, Directories, FilesLoaded, ParsingError"
+        },
+        {
+            "table_name": "PECmd_Output_Timeline",
+            "select2": "a_id, RunTime, ExecutableName"
+        },
+        {
+            "table_name": "MFTECmd_MFT_Output",
+            "select2": "a_id, EntryNumber, SequenceNumber, InUse, ParentEntryNumber, ParentSequenceNumber, ParentPath, FileName, Extension, FileSize, ReferenceCount, ReparseTarget, IsDirectory, HasAds, IsAds, \"SI<FN\", uSecZeros, Copied, SiFlags, NameType, Created0x10, Created0x30, LastModified0x10, LastModified0x30, LastRecordChange0x10, LastRecordChange0x30, LastAccess0x10, LastAccess0x30, UpdateSequenceNumber, LogfileSequenceNumber, SecurityId, ObjectIdFileDroid, LoggedUtilStream, ZoneIdContents"
+        },
+        {
+            "table_name": "NLT_LogFile",
+            "select2": "a_id, LSN, \"EventTime(UTC 0)\" as \"EventTime\", Event, Detail, \"File/Directory Name\", \"Full Path\", \"Create Time\", \"Modified Time\", \"MFT_Modified Time\", \"Access Time\", Redo, \"Target VCN\", \"Cluster Index\""
+        },
+        {
+            "table_name": "NLT_UsnJrnl",
+            "select2": "a_id, \"TimeStamp(UTC 0)\" as \"TimeStamp\", USN, \"File/Directory Name\", FullPath, EventInfo, SourceInfo, FileAttribute, \"Carving Flag\", FileReferenceNumber, ParentFileReferenceNumber"
+        },
+        {
+            "table_name": "RECmd_Batch_BasicSystemInfo_Output",
+            "select2": "a_id, LastWriteTimestamp, ValueName, ValueType, ValueData, ValueData2, ValueData3, Comment, Recursive, Deleted, PluginDetailFile, HivePath, HiveType, Description, Category, KeyPath"
+        },
+        {
+            "table_name": "UserAssist___Users__NTUSER_DAT",
+            "select2": "a_id, LastExecuted, BatchValueName, ProgramName, RunCounter, FocusCount, FocusTime, BatchKeyPath"
+        },
+        {
+            "table_name": "BamDam___Windows_System32_config_SYSTEM",
+            "select2": "a_id, ExecutionTime, Program, BatchKeyPath, BatchValueName"
+        },
+        {
+            "table_name": "UserAccounts___Windows_System32_config_SAM",
+            "select2": "a_id, UserName, FullName, PasswordHint, Groups, Comment, UserComment, HomeDirectory, InternetUserName, ResetData, CreatedOn, LastLoginTime, LastPasswordChange, LastIncorrectPassword, ValidUserId, BatchKeyPath, BatchValueName, UserId, InvalidLoginCount, TotalLoginCount, ExpiresOn, AccountDisabled, HomeDirectoryRequired, PasswordNotRequired, TempDuplicateAccount, NormalUserAccount, MnsLogonAccount, InterdomainTrustAccount, WorkstationTrustAccount, ServerTrustAccount, PasswordDoesNotExpire, AutoLocked"
+        },
+        {
+            "table_name": "TimeZoneInfo___Windows_System32_config_SYSTEM",
+            "select2": "a_id, ValueName, BatchKeyPath, ValueData, BatchValueName, ValueDataRaw"
+        },
+        {
+            "table_name": "USB___Windows_System32_config_SYSTEM",
+            "select2": "a_id, Timestamp, DeviceName, FriendlyName, SerialNumber, LocationInformation, KeyName, BatchValueName, ParentidPrefix, Service, BatchKeyPath"
+        },
+        {
+            "table_name": "USBSTOR___Windows_System32_config_SYSTEM",
+            "select2": "a_id, Timestamp, Title, DeviceName, SerialNumber, Manufacturer, Version, Installed, FirstInstalled, LastConnected, LastRemoved, BatchValueName, BatchKeyPath, DiskId"
+        },
+        {
+            "table_name": "SCSI___Windows_System32_config_SYSTEM",
+            "select2": "a_id, Timestamp, DeviceName, Title, SerialNumber, Manufacturer, InitialTimestamp, Installed, FirstInstalled, LastConnected, LastRemoved, DiskId, BatchKeyPath, BatchValueName"
+        },
+        {
+            "table_name": "DeviceClasses___Windows_System32_config_SYSTEM",
+            "select2": "a_id, Timestamp, Name, SerialNumber, BatchValueName, GuidFolder, Type, BatchKeyPath"
+        },
+        {
+            "table_name": "RecentDocs___Users__NTUSER_DAT",
+            "select2": "a_id, Extension, ValueName, BatchValueName, TargetName, LnkName, MruPosition, OpenedOn, ExtensionLastOpened, BatchKeyPath"
+        },
+        {
+            "table_name": "OpenSavePidlMRU___Users__NTUSER_DAT",
+            "select2": "a_id, OpenedOn, AbsolutePath, ValueName, BatchValueName, MruPosition, Details, Extension, BatchKeyPath"
+        },
+        {
+            "table_name": "LastVisitedPidlMRU___Users__NTUSER_DAT",
+            "select2": "a_id, OpenedOn, Executable, AbsolutePath, Details, MruPosition, BatchValueName, BatchKeyPath, ValueName"
+        },
+        {
+            "table_name": "KnownNetworks___Windows_System32_config_SOFTWARE",
+            "select2": "a_id, FirstNetwork, NetworkName, NameType, FirstConnectLOCAL, LastConnectedLOCAL, BatchValueName, Managed, DNSSuffix, GatewayMacAddress, ProfileGUID, BatchKeyPath"
+        },
+        {
+            "table_name": "WordWheelQuery___Users__NTUSER_DAT",
+            "select2": "a_id, LastWriteTimestamp, SearchTerm, MruPosition, BatchValueName, KeyName, BatchKeyPath"
+        },
+        {
+            "table_name": "RECmd_Batch_InstalledSoftware_Output",
+            "select2": "a_id, HivePath, HiveType, Description, Category, KeyPath, ValueName, ValueType, ValueData, ValueData2, ValueData3, Comment, Recursive, Deleted, LastWriteTimestamp, PluginDetailFile"
+        },
+        {
+            "table_name": "SrumECmd_AppResourceUseInfo_Output",
+            "select2": "a_id, Id, Timestamp, ExeInfo, ExeInfoDescription, ExeTimestamp, SidType, Sid, UserName, UserId, AppId, BackgroundBytesRead, BackgroundBytesWritten, BackgroundContextSwitches, BackgroundCycleTime, BackgroundNumberOfFlushes, BackgroundNumReadOperations, BackgroundNumWriteOperations, FaceTime, ForegroundBytesRead, ForegroundBytesWritten, ForegroundContextSwitches, ForegroundCycleTime, ForegroundNumberOfFlushes, ForegroundNumReadOperations, ForegroundNumWriteOperations"
+        },
+        {
+            "table_name": "SrumECmd_NetworkConnections_Output",
+            "select2": "a_id, Id, Timestamp, ExeInfo, ExeInfoDescription, ExeTimestamp, SidType, Sid, UserName, UserId, AppId, ConnectedTime, ConnectStartTime, InterfaceLuid, InterfaceType, L2ProfileFlags, L2ProfileId, ProfileName"
+        },
+        {
+            "table_name": "SrumECmd_NetworkUsages_Output",
+            "select2": "a_id, Id, Timestamp, ExeInfo, ExeInfoDescription, ExeTimestamp, SidType, Sid, UserName, UserId, AppId, BytesReceived, BytesSent, InterfaceLuid, InterfaceType, L2ProfileFlags, L2ProfileId, ProfileName"
+        },
+        {
+            "table_name": "Total_Timeline",
+            "select2": "t_id, t_dateTime, t_attribute, t_timelineCategory, t_category, t_type, t_itemName, t_itemValue, t_tableName, t_tableId, category_1, category_2, category_3, t_main"
+        },
+        {
+            "table_name": "BookMark_Info",
+            "select2": "b_id, b_name, b_color"
+        },
+        {
+            "table_name": "BookMark_mapper",
+            "select2": "b_id, b_tableName, b_tableId, category_1, category_2, category_3"
+        }
+    ]
+}

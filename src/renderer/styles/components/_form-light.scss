@@ -1,0 +1,94 @@
+.q-radio {
+  .q-radio__inner {
+    color: $light-dark;
+  }
+  .q-radio__inner--truthy {
+    color: $light-primary;
+  }
+}
+.q-checkbox {
+  &.disabled {
+    .q-checkbox__bg {
+      border-color: grey !important;
+      background-color: $grey-8;
+      .q-checkbox__svg {
+        color: grey;
+      }
+    }
+  }
+  & .q-checkbox__inner {
+    color: $light-dark;
+  }
+  & .q-checkbox__inner--truthy {
+    color: $light-primary;
+  }
+}
+
+.q-field {
+  .q-field__control {
+    color: $light-primary;
+  }
+  .q-field__control:before {
+    background-color: #ffffff;
+    border-color: $light-border-second;
+  }
+  .q-field__focusable-action {
+    opacity: 1;
+  }
+  &.q-field--disabled,
+  &.q-field--readonly {
+    .q-field__control:before {
+      // color: #999;
+      background-color: $light-bg;
+      border-color: #BDBDBD;
+    }
+  }
+  &--light .q-field__control:hover:before {
+    border-color: $light-border-second;
+  }
+}
+
+.q-tabs {
+  .q-tab {
+    border-right-color: $light-border;
+  }
+  .q-tab__indicator {
+    background: $light-secondary !important;
+  }
+  .q-tab--active {
+    background: $light-secondary !important;
+    color: #ffffff;
+  }
+  &.tab-result {
+    .q-tab {
+      color: #999;
+      background: #1e2022;
+    }
+    .q-tab--active {
+      color: #fff;
+      background: linear-gradient(0deg, rgba(20, 215, 200, 0.5) 0%, rgba(20, 215, 200, 0.15) 100%) !important;
+    }
+    &.oa-header {
+      border-color: #1e2022;
+      .q-tab {
+        &--inactive {
+          background: rgba(245, 250, 255, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.q-tab-panels {
+  border-radius: 0;
+  background: rgba(245, 250, 255, 0.2);
+  .result-tree {
+    .q-tree--dark {
+      background: rgba(245, 250, 255, 0.2);
+      min-height: 100%;
+    }
+  }
+  &.oa-container {
+    background-color: rgba(10, 20, 30, 0.2);
+  }
+}

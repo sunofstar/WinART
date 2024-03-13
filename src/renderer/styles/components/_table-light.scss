@@ -1,0 +1,46 @@
+.d-tbl-wrap {
+    table {
+        caption {
+            color: $light-primary;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        tr {
+            height: 2.5rem;
+            border-bottom: 1px solid rgba($light-border, 100%);
+
+            &:last-child {
+                border: none;
+            }
+
+            th {
+                padding-left: 0.75rem;
+                background-color: $light-table;
+            }
+
+            td {
+                padding-left: 0.625rem;
+                background-color: #fff;
+            }
+        }
+    }
+}
+.q-pagination {
+    .q-pagination__content {
+        .q-pagination__middle {
+            // active된 숫자
+            .q-btn--actionable.q-btn--standard:before {
+                background-color: #dfe0e2;
+                box-shadow: none;
+            }
+            .block {
+                color: $light-color;
+            }
+        }
+        // 화살표
+        .q-btn .q-icon {
+            color: $light-dark;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+// theme 클래스가 최상위 엘리먼트에 생성 되기에 theme style 여기에 선언
+.body--dark { 
+    background: -webkit-radial-gradient(top, 50% 95%, #3C3E40 0%, #1E2022 96% )!important;
+    box-shadow: inset 0 0 0 1px #101214;
+}

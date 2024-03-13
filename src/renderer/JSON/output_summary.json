@@ -1,0 +1,230 @@
+[
+  {
+    "Category_1": "Amcache",
+    "Category_2": "장치흔적",
+    "Category_3": "DeviceContainers",
+    "count": 53
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "장치흔적",
+    "Category_3": "DevicePnps",
+    "count": 248
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "장치흔적",
+    "Category_3": "DriveBinaries",
+    "count": 506
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "장치흔적",
+    "Category_3": "DriverPackages",
+    "count": 177
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "프로그램실행",
+    "Category_3": "AssociatedFileEntries",
+    "count": 5355
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "프로그램실행",
+    "Category_3": "ProgramEntries",
+    "count": 894
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "프로그램실행",
+    "Category_3": "ShortCuts",
+    "count": 592
+  },
+  {
+    "Category_1": "Amcache",
+    "Category_2": "프로그램실행",
+    "Category_3": "UnassociatedFileEntries",
+    "count": 2359
+  },
+  {
+    "Category_1": "EventLogs",
+    "Category_2": "이벤트로그",
+    "Category_3": "이벤트로그",
+    "count": 539865
+  },
+  {
+    "Category_1": "FileDeletion",
+    "Category_2": "휴지통",
+    "Category_3": "휴지통",
+    "count": 13
+  },
+  {
+    "Category_1": "FileFolderAccess",
+    "Category_2": "Shellbag",
+    "Category_3": "NTUSER",
+    "count": 1297
+  },
+  {
+    "Category_1": "FileFolderAccess",
+    "Category_2": "Shellbag",
+    "Category_3": "UsrClass",
+    "count": 5047
+  },
+  {
+    "Category_1": "FileFolderAccess",
+    "Category_2": "링크파일",
+    "Category_3": "링크파일",
+    "count": 388
+  },
+  {
+    "Category_1": "FileFolderAccess",
+    "Category_2": "윈도우타임라인",
+    "Category_3": "Activity",
+    "count": 6410
+  },
+  {
+    "Category_1": "FileFolderAccess",
+    "Category_2": "점프리스트",
+    "Category_3": "AutomaticDestinations",
+    "count": 6156
+  },
+  {
+    "Category_1": "FileFolderAccess",
+    "Category_2": "점프리스트",
+    "Category_3": "CustomDestinations",
+    "count": 237
+  },
+  {
+    "Category_1": "FileSystem",
+    "Category_2": "Jrnl",
+    "Category_3": "NLT_UsnJrnl",
+    "count": 274128
+  },
+  {
+    "Category_1": "FileSystem",
+    "Category_2": "MFT",
+    "Category_3": "MFTECmd_MFT",
+    "count": 3324074
+  },
+  {
+    "Category_1": "ProgramExecution",
+    "Category_2": "Prefetch",
+    "Category_3": "PECmd_Output",
+    "count": 156
+  },
+  {
+    "Category_1": "ProgramExecution",
+    "Category_2": "Prefetch",
+    "Category_3": "PECmd_Timeline",
+    "count": 861
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "SystemInformation",
+    "Category_3": "SystemInformation",
+    "count": 496
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "Timezone",
+    "Category_3": "TimeZoneInfo",
+    "count": 27
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "네트워크",
+    "Category_3": "KnownNetworks",
+    "count": 32
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "사용자계정",
+    "Category_3": "사용자계정",
+    "count": 6
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "설치목록",
+    "Category_3": "RECmd_Batch",
+    "count": 3895
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "입력_또는_검색",
+    "Category_3": "WordWheelQuery",
+    "count": 77
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "장치흔적",
+    "Category_3": "DeviceClasses",
+    "count": 87
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "장치흔적",
+    "Category_3": "SCSI_WinArtifacts",
+    "count": 9
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "장치흔적",
+    "Category_3": "USBSTOR_WinArtifacts",
+    "count": 3
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "장치흔적",
+    "Category_3": "USB_WinArtifacts",
+    "count": 56
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "파일폴더접근",
+    "Category_3": "LastVisitedPidlMRU",
+    "count": 50
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "파일폴더접근",
+    "Category_3": "OpenSavePidlMRU",
+    "count": 1767
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "파일폴더접근",
+    "Category_3": "RecentDocs",
+    "count": 1920
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "프로그램실행",
+    "Category_3": "BamDam",
+    "count": 116
+  },
+  {
+    "Category_1": "Registry",
+    "Category_2": "프로그램실행",
+    "Category_3": "UserAssist",
+    "count": 534
+  },
+  {
+    "Category_1": "SRUMDatabase",
+    "Category_2": "네트워크",
+    "Category_3": "NetworkConnections",
+    "count": 5552
+  },
+  {
+    "Category_1": "SRUMDatabase",
+    "Category_2": "네트워크",
+    "Category_3": "NetworkUsages",
+    "count": 72258
+  },
+  {
+    "Category_1": "SRUMDatabase",
+    "Category_2": "프로그램실행",
+    "Category_3": "AppResourceUseInfo",
+    "count": 385611
+  }
+]

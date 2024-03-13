@@ -1,0 +1,9 @@
+.theme--light .v-icon,
+.theme--dark .v-icon {
+  color: currentColor;
+}
+
+.turned-icon .q-icon,
+.turned-icon.q-icon {
+  rotate: 45deg;
+}

@@ -1,0 +1,26 @@
+.delete--text {
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+// 기본 색상 지정
+.wrapper {
+  color: $light-color !important;
+}
+.text-primary {
+  color: $light-primary !important;
+}
+.text-info {
+  color: $light-secondary !important;
+}
+h2 {
+  color: $light-secondary;
+}
+h3 {
+  color: $light-primary;
+}
+.q-table__card {
+  color: $light-color !important;
+}
+.q-item__label {
+  color: $light-color !important;
+}

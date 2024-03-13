@@ -1,0 +1,49 @@
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  display: none;
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}
+
+// theme 클래스가 최상위 엘리먼트에 생성 되기에 theme style 여기에 선언
+.body--dark {
+  &::-webkit-scrollbar-button {
+    background: rgba(245, 250, 255, 0.05);
+  }
+  &::-webkit-scrollbar-corner,
+  &::-webkit-resizer,
+  &::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-track {
+    background: rgba(63, 64, 67, 1);
+  }
+  &::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 140, 142, 1);
+  }
+}
+
+.body--light {
+    &::-webkit-scrollbar-corner,
+    &::-webkit-resizer,
+    &::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-track {
+      background: #d5d7dA;
+    }
+  
+    &::-webkit-scrollbar-thumb,
+    ::-webkit-scrollbar-thumb {
+      background: #eaebed;
+      box-shadow: 0px 2px 2px rgba(0,0,0,15%);
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "paths": {
+      "@electron/*": ["src/electron/*"],
+      "@renderer/*": ["src/renderer/*"],
+      "@share/*": ["src/shared/*"]
+    }
+  },
+  "include": ["src/electron/**/*", "src/shared/*", "src/electron/ipc/queryKapeDB2.js", "resources/spawnTest.js"],
+  "references": [
+    {
+      "path": "tsconfig.node.json"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+footer {
+  .q-btn {
+    &.disabled {
+      color: rgba(#000, 23%) !important;
+      background-color: $light-bg-second !important;
+      border-color: rgba(#000, 23%) !important;
+    }
+    &.prev {
+      &.q-btn--outline::before {
+        color: $light-dark;
+      }
+    }
+  }
+}

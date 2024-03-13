@@ -1,0 +1,92 @@
+Description: Parses MFT, Registy and Event Logs into mini-timeline
+Category: Timeline
+Author: Mari DeGrazia
+Version: 1.0
+Id: 50415221-4267-47e4-985f-346a709e8b8e
+ExportFormat: ""
+FileMask: ""
+Processors:
+    -
+        Executable: MFTECmd_$MFT_Bodyfile.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: MFTECmd_$MFT_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: EVT_Security_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: EVT_System_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: EVT_Application_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: EvtxECmd_for_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: EvtxECmd_to_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_NTUSER_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_UsrClass_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_SAM_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_Security_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_Software_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_System_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegRipper_Services_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegTime_Default_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegRipper_NTUSER_muicache_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegRipper_AppCompatCache_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: RegRipper_NTUSER_userassit_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+        # Add new modules for TLN output above this line^
+    -
+        Executable: Convert_unicode.mkape
+        CommandLine: ""
+        ExportFormat: csv
+    -
+        Executable: Parse_TLN.mkape
+        CommandLine: ""
+        ExportFormat: csv
+
+# Documentation
+# Add in key "computerName" using --mvars computerName:XXXX

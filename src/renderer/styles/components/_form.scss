@@ -1,0 +1,208 @@
+/* checkbox & radio */
+.q-option-group {
+  padding-left: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  & > div {
+    display: flex;
+    height: 100%;
+  }
+  .q-checkbox, .q-radio {
+    margin-right: 2rem;
+    white-space: nowrap;
+  }
+}
+.radio-group {
+  margin-left: 0.25rem;
+  .q-radio {
+    margin-right: 2.5rem;
+  }
+}
+.q-checkbox{
+  &--dense {
+    .q-checkbox__inner {
+      .q-checkbox__bg {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+  &.disabled {
+    .q-checkbox__bg {
+      border-color: grey !important;
+      background-color: $grey-8;
+    }
+  }
+  &.check-all {
+    // margin-right: 1.5rem;
+    white-space: nowrap;
+    // align-self: flex-start;
+  }
+}
+
+.q-checkbox__label,
+.q-checkbox--dense .q-checkbox__label {
+  padding-left: 0.625rem !important;
+}
+.q-radio__label,
+.q-radio--dense .q-radio__label {
+  padding-left: 0.375rem !important;
+}
+
+/* dense checkbox custom */
+body.desktop .q-checkbox:not(.disabled) .q-checkbox__inner:before{
+  top: 2px !important;
+  left: 2px !important;
+}
+body.desktop .q-checkbox--dense:not(.disabled):focus .q-checkbox__inner:before, 
+body.desktop .q-checkbox--dense:not(.disabled):hover .q-checkbox__inner:before {
+  transform: scale3d(1.8, 1.8, 1) !important;
+}
+
+/* text field */
+.q-field {
+  font-size: 0.9375rem !important;
+  &--dense &__control,
+  &--dense &__native,
+  &--dense &__marginal {
+    min-height: 2.25rem !important;
+    height: auto !important;
+  }
+  .q-field__append.q-field__marginal{
+    margin-left: 1px;
+    padding-left: 0px;
+  }
+  .q-field__inner {
+    .q-field__control {
+      padding: 0 12px;
+      font-size: 0.875rem;
+    }
+  }
+  &.q-field--error {
+    .q-field__bottom {
+      font-size: 0.875rem;
+      padding: 0;
+      &.q-field__bottom--animated {
+        transform: translateY(30%);
+        position: relative;
+        top: 0;
+        left: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  &.q-field--readonly .q-field__control:before {
+    border-width: 1px;
+    border-style: solid !important;
+  }
+  &.q-field--with-bottom {
+    padding-bottom: 0;
+  }
+  &__native,
+  &__prefix,
+  &__suffix,
+  &__input {
+    line-height: 1.5rem !important;
+    padding: 0 !important;
+  }
+  &.folder {
+    width: calc(100% - 9.375rem);
+  }
+  .mdi-close.q-field__focusable-action {
+    width: 1.375rem;
+    height: 1.375rem;
+    .q-icon::before {
+      font-size: 1.375rem;
+    }
+  }
+}
+/* form - input */
+.q-form {
+  &.bm-manage {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding-left: 5.5rem;
+    justify-content: space-between;
+    .q-input {
+      width: calc(100% - 4.25rem);
+      font-size: 0.9375rem !important;
+    }
+    .q-btn {
+      width: 3.75rem;
+      height: 2.25rem;
+    }
+  }
+}
+
+.date-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .q-input {
+    width: calc(50% - 1.2rem);
+    /*.q-field__native[readonly] {
+      cursor: pointer;
+    }*/
+  }
+}
+
+/* select */
+.q-select {
+  display: flex;
+  &.select-page {
+    width: 5rem;
+  }
+}
+
+
+/* tabs */
+.q-tabs {
+  .q-tab {
+    border-right: 1px solid;
+    .q-focusable:focus > .q-focus-helper,
+    .q-manual-focusable--focused > .q-focus-helper,
+    .q-hoverable:hover > .q-focus-helper,
+    .q-focus-helper:before,
+    .q-focus-helper:after,
+    .q-focus-helper,
+    &__indicator {
+      background: $info !important;
+    }
+    &__indicator {
+      height: 1px !important;
+    }
+  }
+  &.tab-result {
+    .q-tab {
+      .q-focusable:focus > .q-focus-helper,
+      .q-manual-focusable--focused > .q-focus-helper,
+      .q-hoverable:hover > .q-focus-helper,
+      .q-focus-helper:before,
+      .q-focus-helper:after,
+      .q-focus-helper,
+      &__indicator {
+        background: $primary !important;
+      }
+      &--active .q-tab__label {
+        font-weight: 700;
+      }
+      &__label {
+        font-size: 1.125rem;
+      }
+    }
+    &.oa-header {
+      width: 100%;
+      border: 1px solid;
+      .q-tab {
+        &:last-child {
+            border-right: 0 none;
+        }
+        &__label {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+

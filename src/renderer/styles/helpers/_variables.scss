@@ -1,0 +1,74 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS: Override Vuetify Variables
+----------------------------------------------------------------
+# globals
+# dark
+# light
+# button
+# radio
+# dialog
+# Steppers
+# Text field
+# Tooltip
+
+    * 변수 api 참조
+    * https://quasar.dev/style/sass-scss-variables#variables-list
+
+    * 글로벌이 아닌 변수 사용법 - 해당 변수 import
+
+    * 중첩 변수 사용법
+    * font-size: map-get(map-get($headings, 'h1'), 'size');
+--------------------------------------------------------------*/
+/* @import '~quasar/src/css/index.sass'; */
+/*--------------------------------------------------------------
+# globals
+--------------------------------------------------------------*/
+$body-font-family: 'Noto Sans KR', 'Noto Sans CJK KR', 'Noto Sans', 'New Roboto', 'Roboto', sans-serif;
+
+/*--------------------------------------------------------------
+# dark
+--------------------------------------------------------------*/
+$material-dark: (
+  'background': #36393c
+);
+
+/*--------------------------------------------------------------
+# light
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# button
+--------------------------------------------------------------*/
+$btn-font-sizes: (
+  // 'x-small': .625rem,
+  'small': 0.875rem,
+  'default': 1rem,
+  'large': 19px,
+  'x-large': 1.5rem
+);
+
+$btn-sizes: (
+  // 'x-small': 20,
+  'small': 32,
+  'default': 40,
+  'large': 60,
+  'x-large': 60
+);
+
+/*--------------------------------------------------------------
+# radio
+--------------------------------------------------------------*/
+$radio-margin-right: 28px;
+
+/*--------------------------------------------------------------
+# dialog
+--------------------------------------------------------------*/
+$dialog-card-text-padding: 1.5rem;
+$dialog-card-title-padding: 20px !default;
+
+/*--------------------------------------------------------------
+# Text field
+--------------------------------------------------------------*/
+$text-field-dense-padding: 6px 0;
+$text-field-solo-dense-control-min-height: 30px;
+$text-field-filled-full-width-outlined-single-line-slot-min-height: 30px;

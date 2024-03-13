@@ -1,0 +1,41 @@
+.q-dialog {
+    &.fullscreen {
+        background-color: rgba(#000000, 65%);
+    }
+    &__inner > div {
+        box-shadow: none;
+    }
+    .q-card {
+        background: $light-bg;
+        border-color: $light-border;
+        .d-header h1 {
+            color: $light-secondary;
+        }
+        .d-container {
+            background: #ffffff;
+            color: $light-color;
+            h2 {
+                color: $light-primary;
+            }
+            .tbl-data {
+                thead tr th,
+                tbody tr th {
+                    background: $light-table;
+                    border-color: $light-border;
+                }
+                tbody {
+                    tr {
+                        td {
+                            // background: rgba(0,0,0,0.2)
+                            border-color: $light-border;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .q-menu {
+//     box-shadow: 0 3px 6px 0 rgb(0 0 0 / 40%), 0 6px 12px 0 rgb(0 0 0 / 30%), 0 9px 18px 0 rgb(0 0 0 / 20%);
+// }

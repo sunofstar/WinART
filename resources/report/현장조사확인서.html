@@ -1,0 +1,431 @@
+<!--
+분석 보고서
+-->
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>현장조사확인서</title>
+    <style>
+      @media print {
+        @page {
+          size: A4;
+          margin: 16pt 8pt;
+          page-break-after: always;
+        }
+        html {
+          font-size: 8pt;
+        }
+      }
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        font-weight: normal;
+        src:
+          local('NanumBarunGothic'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWeb.woff) format('woff'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWeb.ttf) format('truetype');
+      }
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        font-weight: bold;
+        src:
+          local('NanumBarunGothicBold'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWebBold.woff) format('woff'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWebBold.ttf) format('truetype');
+      }
+      /* Common */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 10px;
+        word-break: break-all;
+      }
+      body {
+        color: #000;
+        font-family: 'NanumBareunGothic', 'Sans-serif', 'Malgun Gothic', '맑은 고딕', '돋움';
+        font-size: inherit;
+        font-weight: normal;
+        line-height: 1.2;
+        overflow: auto;
+        -webkit-font-smoothing: antialiased;
+        -webkit-print-color-adjust: exact;
+      }
+      table {
+        position: relative;
+        width: inherit;
+        border-spacing: 0;
+        border-collapse: collapse;
+        word-break: break-all;
+        table-layout: fixed;
+      }
+      header,
+      article,
+      section,
+      footer,
+      .wrapper,
+      .page_img {
+        position: relative;
+        display: block;
+        float: left;
+        width: 100%;
+      }
+      section {
+        margin-top: 2rem;
+      }
+      h1 {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        line-height: 3.6rem;
+        font-size: 2.6rem;
+        text-align: center;
+      }
+      h2 {
+        display: inline-block;
+        float: left;
+        width: 9.6rem;
+        height: 9.6rem;
+      }
+      h2 img {
+        width: 100%;
+        height: 100%;
+      }
+      .sign {
+        display: block;
+        height: 4rem;
+        font-size: 1.2rem;
+      }
+
+      /* header */
+      .line_wrap > img {
+        display: inline-block;
+      }
+      .line_wrap > strong {
+        display: inline-block;
+        font-size: 1.375rem;
+        font-weight: bold;
+        padding-left: 0.3rem;
+      }
+      .line_wrap::after {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 0.475rem;
+        background-color: #107fb5;
+        margin-top: 0.1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      /* Content */
+      section pre {
+        line-height: 2.4rem;
+      }
+      .tit_area {
+        padding-bottom: 1.2rem;
+      }
+      .tit_area dl {
+        display: block;
+        float: left;
+        width: 100%;
+        line-height: 3rem;
+      }
+      .tit_area dt,
+      .tit_area dd {
+        display: inline-block;
+        float: left;
+        font-size: 1.8rem;
+      }
+      .tit_area dt {
+        font-weight: bold;
+      }
+      .tit_area dd {
+        max-width: calc(100% - 5rem);
+        padding-left: 1rem;
+      }
+      .cont_area {
+        padding-bottom: 2rem;
+        border-bottom: 0.1rem dotted #ccc;
+      }
+
+      .tbl_list {
+        margin-top: 1rem;
+        text-align: center;
+      }
+      .tbl_list .cmmt {
+        text-align: left;
+        padding-left: 2rem;
+      }
+      .tbl_list .cmmt .flex {
+        display: flex;
+      }
+      .tbl_list .cmmt .center {
+        padding-right: 10px;
+      }
+      .tbl_list .cmmt .blue-color {
+        color: #0000ff;
+      }
+      .tbl_list .cmmt-small {
+        font-size: 0.9rem;
+        line-height: 1.6rem;
+        text-align: left;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .tbl_list tr {
+        page-break-inside: avoid;
+      }
+      .tbl_list thead {
+        display: table-row-group;
+      }
+      .tbl_list tbody td {
+        padding: 0.5rem;
+        font-size: 1.3rem;
+        line-height: 2.4rem;
+        background: #fff;
+        border: 0.1rem solid #d9d9d9;
+      }
+
+      .tbl_list_hash {
+        margin-top: 1rem;
+        text-align: center;
+        border: 0.1rem solid #d9d9d9;
+      }
+      .tbl_list_hash tr {
+        page-break-inside: avoid;
+      }
+      .tbl_list_hash tbody td {
+        padding: 0.5rem;
+        font-size: 1.3rem;
+        line-height: 2.4rem;
+        background: #fff;
+        border: 0.1rem solid #d9d9d9;
+      }
+      .tbl_list_hash .cmmt {
+        text-align: left;
+        padding-left: 2rem;
+        font-size: 1rem;
+      }
+
+      .tbl_list_2 {
+        margin-top: 1rem;
+        text-align: left;
+        border: 0.1rem solid #d9d9d9;
+      }
+      .tbl_list_2 tr {
+        page-break-inside: avoid;
+      }
+      .tbl_list_2 tr:first-of-type > td {
+        padding-top: 1rem;
+      }
+      .tbl_list_2 tr:last-child > td {
+        padding-bottom: 1rem;
+      }
+      .tbl_list_2 tbody td {
+        padding: 0 0.5rem 0 2rem;
+        font-size: 1.3rem;
+        line-height: 2.5rem;
+        background: #fff;
+        word-break: keep-all;
+      }
+
+      .report {
+        float: left;
+        width: 100%;
+      }
+
+      .report_page {
+        width: 760px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="report">
+      <div class="report_page">
+        <header>
+          <div class="sign">[별지 제2호 서식] 현장조사확인서</div>
+          <div class="line_wrap">
+            <img
+              width="28"
+              height="30"
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTQuNDcgMjM5LjQiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojMDBhMGIwO30uY2xzLTJ7ZmlsbDojMDA3ZDliO30uY2xzLTN7ZmlsbDojMDA0ZjcyO30uY2xzLTR7ZmlsbDojMjMxZjIwO308L3N0eWxlPjwvZGVmcz48dGl0bGU+7J6Q7IKwIDE8L3RpdGxlPjxnIGlkPSLroIjsnbTslrRfMiIgZGF0YS1uYW1lPSLroIjsnbTslrQgMiI+PGcgaWQ9IkxheWVyXzEiIGRhdGEtbmFtZT0iTGF5ZXIgMSI+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTg1LjcyLDE1LjkyVjEzMC40N2gyMy41M1Y3LjUyQzIwMy4yMiwxMS40OCwxOTUuMDYsMTQuNDUsMTg1LjcyLDE1LjkyWiIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTE3Mi4zNywxN2E4MS43LDgxLjcsMCwwLDEtMjEuNjYtMi44MlYxMzAuNDdoMjMuNTNWMTYuOTNaIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDUuNjgsNy40MlYxMzAuNDdINjkuMlYxNS45QzU5Ljg2LDE0LjQxLDUxLjY5LDExLjQxLDQ1LjY4LDcuNDJaIi8+PHBhdGggY2xhc3M9ImNscy0zIiBkPSJNMTI3LjUyLDBDMTI1LDMuNzQsMTIwLjkxLDcuMDcsMTE1LjcsOS43N1YxMzAuNTFsMTEuNjksNC44NCwxMS44My00Ljg4VjkuN0MxMzQuMDgsNywxMzAsMy43MSwxMjcuNTIsMFoiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik04Mi43LDE3Yy0uNjcsMC0xLjM1LDAtMiwwVjEzMC40N2gyMy41MlYxNC4xOEE4Mi4zNyw4Mi4zNywwLDAsMSw4Mi43LDE3WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTEyMS43OSwxNjdIMTE1djcuNDNIMTAxLjE1di03LjVINzkuMjl2Ni44SDk0LjM2djE1SDgyLjUzdjIwLjY1aDQxLjgxVjE4OC42NmgtMi41NVptLTIwLjY0LDE0LjIySDExNXY3LjQ4SDEwMS4xNVpNODkuMzEsMjAyLjUydi03LjA4aDI4LjI1djcuMDhaIi8+PHBvbHlnb24gY2xhc3M9ImNscy00IiBwb2ludHM9IjEzNy41MSAyMDIuNzUgMTM3LjUxIDE5OS45IDE3Mi43OSAxOTkuOSAxNzIuNzkgMTg1LjA4IDE3MC4wNCAxODUuMDggMTcwLjA0IDE4MC4wOSAxNzUuMzYgMTgwLjA5IDE3NS4zNiAxNzMuMyAxNzAuMDQgMTczLjMgMTcwLjA0IDE2Ny4wNiAxNjMuMjUgMTY3LjA2IDE2My4yNSAxODUuMDggMTU2LjEyIDE4NS4wOCAxNTkuMjUgMTc5Ljg4IDE1MC4yIDE3NC43MSAxNTguNDYgMTc0LjcxIDE1OC40NiAxNjcuOTEgMTQ3LjI4IDE2Ny45MSAxNDcuMjggMTYzLjUxIDE0MC40OCAxNjMuNTEgMTQwLjQ4IDE2Ny45MSAxMjkuOTggMTY3LjkxIDEyOS45OCAxNzQuNzEgMTM3Ljc2IDE3NC43MSAxMjguOTEgMTgwLjAxIDEzMi41MyAxODUuNzYgMTQzLjkyIDE3OC41OSAxNTQuNjggMTg1LjA4IDEzNC43MiAxODUuMDggMTM0LjcyIDE5MS4xMiAxNjUuMjUgMTkxLjEyIDE2NS4yNSAxOTMuOTQgMTI5Ljk4IDE5My45NCAxMjkuOTggMjA5LjM2IDE3NS41NyAyMDkuMzYgMTc1LjU3IDIwMi43NSAxMzcuNTEgMjAyLjc1Ii8+PHBhdGggY2xhc3M9ImNscy00IiBkPSJNMCwyMzkuMTN2LTE2SDZxNC4yOCwwLDQuMjcsNC44VDUuODQsMjMyLjZIMy4zNXY2LjUzWm0zLjM1LTEzLjU4djQuNThINS4yMmExLjQ0LDEuNDQsMCwwLDAsMS4yMi0uNjlBMi4zNiwyLjM2LDAsMCwwLDYuOTEsMjI4YzAtMS42Mi0uNjItMi40My0xLjg3LTIuNDNaIi8+PHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTcuODQsMjMyLjQ5djYuNjRIMTQuNDl2LTE2aDYuMmEzLjUyLDMuNTIsMCwwLDEsMi43NSwxLjA5LDQuNDYsNC40NiwwLDAsMSwxLDMuMTNjMCwyLjMxLTEsMy42My0zLDMuOTVhMi45LDIuOSwwLDAsMSwyLjkxLDMuMTZjMCwyLjYxLjEyLDQuMTguMzgsNC43MUgyMS40N2E0LjEyLDQuMTIsMCwwLDEtLjM0LTEuNTNjMC0uMTIsMC0uNjQsMC0xLjU4YTguNDMsOC40MywwLDAsMC0uMjItMi40OWMtLjMxLS42OS0xLTEtMi4xOC0xWm0wLTYuOTRWMjMwaDEuNDlhMS40NywxLjQ3LDAsMCwwLDEuMzYtLjgsMy4wNSwzLjA1LDAsMCwwLC4zNi0xLjU2YzAtMS40LS41OC0yLjExLTEuNzItMi4xMVoiLz48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik0zNC41MSwyMzkuNGMtMi40NSwwLTQuMDctLjg2LTQuODQtMi41OGEyNC4wNSwyNC4wNSwwLDAsMSwwLTExLjQ0Yy43Ny0xLjcxLDIuMzktMi41Niw0Ljg0LTIuNTZzNC4wOC44NSw0Ljg1LDIuNTZhMjQuMDUsMjQuMDUsMCwwLDEsMCwxMS40NEMzOC41OSwyMzguNTQsMzcsMjM5LjQsMzQuNTEsMjM5LjRabTAtMi40YTEuNzUsMS43NSwwLDAsMCwxLjc4LTEuNCwyOC4xOCwyOC4xOCwwLDAsMCwwLTksMS44MywxLjgzLDAsMCwwLTMuNTUsMCwyOC4xOCwyOC4xOCwwLDAsMCwwLDlBMS43NSwxLjc1LDAsMCwwLDM0LjUxLDIzN1oiLz48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik01NC45LDIzNC43NWE0LjE2LDQuMTYsMCwwLDEtMS44NSwzLjg5LDcuNDUsNy40NSwwLDAsMS0zLjc1Ljc2cS00Ljc4LDAtNC43OC00LjUzYzAtLjIzLDAtLjQ2LDAtLjY5aDMuMzVhNS4xNCw1LjE0LDAsMCwwLC4yNywyLDEuNjUsMS42NSwwLDAsMCwxLjY1Ljg0YzEuMTIsMCwxLjY5LS42MSwxLjY5LTEuODIsMC0uNzctLjU5LTEuNTMtMS43Ni0yLjI3LTIuMTEtMS4zMi0zLjE5LTItMy4yNS0yLjA3YTQuNDEsNC40MSwwLDAsMS0xLjc1LTMuNTFxMC00LjUyLDUuMjktNC41MWMzLjMyLDAsNC44NywxLjYxLDQuNjcsNC44Mkg1MS40M2MwLTEuNjEtLjUyLTIuNDItMS41Ni0yLjQyYTEuNTIsMS41MiwwLDAsMC0xLjczLDEuNzFjMCwuODIuNTgsMS41NywxLjc1LDIuMjcsMi4wOSwxLjI0LDMuMTgsMS45LDMuMjUsMkE0LjUsNC41LDAsMCwxLDU0LjksMjM0Ljc1WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTY4LjQ1LDIzOS4xM0g1OS41MnYtMTZoOC43NnYyLjQ2SDYyLjg3djRoNVYyMzJoLTV2NC42OWg1LjU4WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTc4LjIzLDIzOS40cS0zLjY5LDAtNC44NC0yLjU4YTI0LjA1LDI0LjA1LDAsMCwxLDAtMTEuNDRxMS4xNS0yLjU2LDQuODQtMi41NmMzLjI1LDAsNC44LDEuNzgsNC42Nyw1LjMzSDc5LjYxYTUuNzcsNS43NywwLDAsMC0uMzEtMi4yNiwxLjA4LDEuMDgsMCwwLDAtMS4wNy0uNjcsMS43NSwxLjc1LDAsMCwwLTEuNzcsMS40LDI4LjE4LDI4LjE4LDAsMCwwLDAsOSwxLjc1LDEuNzUsMCwwLDAsMS43NywxLjQsMS4zNiwxLjM2LDAsMCwwLDEuMzQtMS4xNiwxNC4xOSwxNC4xOSwwLDAsMCwuMi0yLjExaDMuMzFjMCwyLjA4LS40MiwzLjU2LTEuMjUsNC40NUE0LjcsNC43LDAsMCwxLDc4LjIzLDIzOS40WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTk0LjkyLDIyMy4wOWgzLjM2djExLjM3YTQuNzcsNC43NywwLDAsMS0xLjE4LDMuMzYsNS41LDUuNSwwLDAsMS00LjI3LDEuNTgsNS43Niw1Ljc2LDAsMCwxLTQuMTEtMS4zMyw0LjcyLDQuNzIsMCwwLDEtMS4zNS0zLjYxVjIyMy4wOWgzLjM1djExLjE1cTAsMi43NiwyLjA3LDIuNzZ0Mi4xMy0yLjc2WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTEwMiwyMjMuMDloMTAuODJ2Mi42NmgtMy43M3YxMy4zOEgxMDUuN1YyMjUuNzVIMTAyWiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTExOS45MywyMzkuMTNoLTMuMzZ2LTE2aDMuMzZaIi8+PHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTMwLjM1LDIzOS40cS0zLjY5LDAtNC44NC0yLjU4YTI0LjA1LDI0LjA1LDAsMCwxLDAtMTEuNDRxMS4xNS0yLjU2LDQuODQtMi41NnQ0Ljg1LDIuNTZhMjQuNCwyNC40LDAsMCwxLDAsMTEuNDRRMTM0LDIzOS40LDEzMC4zNSwyMzkuNFptMC0yLjRhMS43NiwxLjc2LDAsMCwwLDEuNzgtMS40LDI5LDI5LDAsMCwwLDAtOSwxLjgzLDEuODMsMCwwLDAtMy41NiwwLDI5LDI5LDAsMCwwLDAsOUExLjc2LDEuNzYsMCwwLDAsMTMwLjM1LDIzN1oiLz48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik0xNDMuOTEsMjM5LjEzSDE0MC44di0xNmg0LjU1bDQuMjksMTEuMTFWMjIzLjA5aDMuMTF2MTZoLTQuNDRsLTQuNC0xMS43M1oiLz48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik0xNzUuNDQsMjM0Ljc1YTQuMTYsNC4xNiwwLDAsMS0xLjg1LDMuODksNy40NSw3LjQ1LDAsMCwxLTMuNzUuNzZxLTQuNzgsMC00Ljc4LTQuNTNjMC0uMjMsMC0uNDYsMC0uNjloMy4zNmE1LDUsMCwwLDAsLjI2LDIsMS42NSwxLjY1LDAsMCwwLDEuNjUuODRjMS4xMiwwLDEuNjktLjYxLDEuNjktMS44MiwwLS43Ny0uNTktMS41My0xLjc2LTIuMjdxLTMuMTctMi0zLjI0LTIuMDdhNC4zOSw0LjM5LDAsMCwxLTEuNzYtMy41MXEwLTQuNTIsNS4yOS00LjUxYzMuMzIsMCw0Ljg3LDEuNjEsNC42Nyw0LjgySDE3MmMwLTEuNjEtLjUyLTIuNDItMS41Ni0yLjQyYTEuNTIsMS41MiwwLDAsMC0xLjczLDEuNzFjMCwuODIuNTgsMS41NywxLjc2LDIuMjcsMi4wOCwxLjI0LDMuMTcsMS45LDMuMjQsMkE0LjUsNC41LDAsMCwxLDE3NS40NCwyMzQuNzVaIi8+PHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTg5LDIzOS4xM2gtOC45M3YtMTZoOC43NnYyLjQ2aC01LjQxdjRoNVYyMzJoLTV2NC42OUgxODlaIi8+PHBhdGggY2xhc3M9ImNscy00IiBkPSJNMTk2LjY4LDIzMi40OXY2LjY0aC0zLjM1di0xNmg2LjJhMy41NiwzLjU2LDAsMCwxLDIuNzYsMS4wOSw0LjUxLDQuNTEsMCwwLDEsMSwzLjEzYzAsMi4zMS0xLDMuNjMtMywzLjk1YTIuOSwyLjksMCwwLDEsMi45MSwzLjE2LDE2LjA3LDE2LjA3LDAsMCwwLC4zOCw0LjcxaC0zLjI5YTQuMTIsNC4xMiwwLDAsMS0uMzQtMS41M2MwLS4xMiwwLS42NCwwLTEuNThhOC40Myw4LjQzLDAsMCwwLS4yMi0yLjQ5Yy0uMzEtLjY5LTEtMS0yLjE4LTFabTAtNi45NFYyMzBoMS40OWExLjQ3LDEuNDcsMCwwLDAsMS4zNi0uOCwzLjA1LDMuMDUsMCwwLDAsLjM2LTEuNTZjMC0xLjQtLjU4LTIuMTEtMS43Mi0yLjExWiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTIxMC42NCwyMzkuMTNsLTMuOTUtMTZoMy40OGwyLjQ5LDExLjY2aC4wNWwyLjgtMTEuNjZoMy4zMWwtNC4yNCwxNloiLz48cGF0aCBjbGFzcz0iY2xzLTQiIGQ9Ik0yMjUuOTEsMjM5LjEzaC0zLjM1di0xNmgzLjM1WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTIzNi4zMywyMzkuNHEtMy42OSwwLTQuODQtMi41OGEyNC4wNSwyNC4wNSwwLDAsMSwwLTExLjQ0cTEuMTUtMi41Niw0Ljg0LTIuNTZjMy4yNSwwLDQuOCwxLjc4LDQuNjcsNS4zM2gtMy4yOWE1Ljc3LDUuNzcsMCwwLDAtLjMxLTIuMjYsMS4wOCwxLjA4LDAsMCwwLTEuMDctLjY3LDEuNzUsMS43NSwwLDAsMC0xLjc3LDEuNCwyOC4xOCwyOC4xOCwwLDAsMCwwLDksMS43NSwxLjc1LDAsMCwwLDEuNzcsMS40LDEuMzUsMS4zNSwwLDAsMCwxLjM0LTEuMTYsMTIuOSwxMi45LDAsMCwwLC4yLTIuMTFoMy4zMWMwLDIuMDgtLjQxLDMuNTYtMS4yNSw0LjQ1QTQuNyw0LjcsMCwwLDEsMjM2LjMzLDIzOS40WiIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTI1NC40NywyMzkuMTNoLTguOTN2LTE2aDguNzV2Mi40NmgtNS40djRoNVYyMzJoLTV2NC42OWg1LjU4WiIvPjwvZz48L2c+PC9zdmc+"
+              alt="검찰청"
+            />
+            <strong>National Digital Forensic Center</strong>
+          </div>
+          <h1>【 현장조사확인서 】</h1>
+        </header>
+        <article>
+          <section class="tit_area">
+            <dl>
+              <dt>이미지파일 정보</dt>
+            </dl>
+          </section>
+          <!--sections-->
+          <table class="tbl_list">
+            <colgroup>
+              <col width="27%" />
+              <col width="*" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>사건번호</td>
+                <td class="cmmt"><!--caseName--></td>
+              </tr>
+              <tr>
+                <td>증거번호</td>
+                <td class="cmmt"><!--imgNum--></td>
+              </tr>
+              <tr>
+                <td>압수장소</td>
+                <td class="cmmt"><!--confiscatedPlace--></td>
+              </tr>
+              <tr>
+                <td>사 용 자</td>
+                <td class="cmmt"><!--confiscatedName--></td>
+              </tr>
+              <tr>
+                <td>조 사 자</td>
+                <td class="cmmt"><!--analystName--></td>
+              </tr>
+              <tr>
+                <td>시간설정</td>
+                <td class="cmmt">
+                  <p class="flex">
+                    <span class="center">PC 설정시간 :</span>
+                    <span class="blue-color"><!--realDatetime--></span>
+                  </p>
+                  <p class="flex">
+                    <span class="center">KST 시간 :</span>
+                    <span class="blue-color"><!--kSTTime--></span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>이미지파일 생성일시</td>
+                <td class="cmmt"><!--imageFileCreationDate--></td>
+              </tr>
+              <tr>
+                <td>이미지파일명</td>
+                <td class="cmmt"><!--caseImgName--></td>
+              </tr>
+            </tbody>
+          </table>
+          <!--sections-->
+          <section class="tit_area">
+            <dl>
+              <dt>해시값</dt>
+            </dl>
+          </section>
+          <!--sections-->
+          <table class="tbl_list_hash">
+            <colgroup>
+              <col width="27%" />
+              <col width="*" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>이미지파일</td>
+                <td class="cmmt">
+                  MD5:
+                  <!--imageFileHashMd5-->
+                  <br />
+                  SHA1:
+                  <!--imageFileHashSha1-->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="tbl_list">
+            <colgroup>
+              <col width="*" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td class="cmmt-small">
+                  ※ Hash Value : 해시값은 데이터를 고유하게 식별하는 고정 길이의 값으로 해시함수의 결과로 생성된다. 만약
+                  원본에서 조금이라도 변경이 되면 계산되는 해시값이 완전히 달라지기 때문에, 일반적으로 디지털증거의
+                  무결성을 입증하는 수단으로 사용되고 있다.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="tbl_list_2">
+            <colgroup>
+              <col width="3%" />
+              <col width="21%" />
+              <col width="*" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <td>
+                  •
+                  <br />
+                  &nbsp;
+                </td>
+                <td colspan="2">
+                  위 해시값은
+                  <u>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </u>
+                  의 디지털기기(
+                  <u>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </u>
+                  )에서 압수한 전자정보에 대한 해시값이고, 그에 대한 전자정보상세목록을 교부(□출력 □복사) 받았음을
+                  확인합니다.
+                </td>
+              </tr>
+              <tr>
+                <td>•</td>
+                <td colspan="2">
+                  전자정보의 선별과정에 참여하였고, 참여과정에서 관련성에 관한 의견진술 등 압수절차에 관한 의견진술의
+                  기회를 보장받았음을 확인합니다.
+                </td>
+              </tr>
+              <tr>
+                <td>•</td>
+                <td colspan="2">
+                  위 압수‧수색‧검증 절차에서 압수한 전자정보는 수사 또는 재판 목적 소멸 시 폐기됨을 고지받았음을
+                  확인합니다.
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td colspan="2">&nbsp;</td>
+              </tr>
+              <tr>
+                <td colspan="2">확인 일시 및 장소</td>
+                <td>:</td>
+              </tr>
+              <tr>
+                <td colspan="2">확인자 성명</td>
+                <td>
+                  :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(서명)
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">확인자 생년월일</td>
+                <td>:</td>
+              </tr>
+              <tr>
+                <td colspan="2">확인자 연락처</td>
+                <td>:</td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  피압수자(임의제출자 등)와의 관계 : 본인, 기타
+                  (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

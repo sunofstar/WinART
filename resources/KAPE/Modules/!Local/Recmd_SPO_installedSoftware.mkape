@@ -1,0 +1,23 @@
+Description: 'RECmd: SPO_InstalledSoftware'
+Category: Registry
+Author: ParkSeongJae
+Version: 1.0
+Id: 37590de8-3db1-44f0-a0c2-8d0a6a8c83b2
+BinaryUrl: https://f001.backblazeb2.com/file/EricZimmermanTools/RECmd.zip
+ExportFormat: csv
+Processors:
+    -
+        Executable: RECmd\RECmd.exe
+        CommandLine: -d %sourceDirectory% --bn BatchExamples\SPO_InstalledSoftware.reb --nl false --csv %destinationDirectory%
+        ExportFormat: csv
+
+# Documentation
+# https://github.com/EricZimmerman/RECmd
+# https://binaryforay.blogspot.com/2015/05/introducing-recmd.html
+# https://aboutdfir.com/toolsandartifacts/windows/registry-explorer-recmd/
+# https://www.andreafortuna.org/2020/03/04/recmd-command-line-tool-for-windows-registry-analysis/
+# https://www.sans.org/blog/finding-registry-malware-persistence-with-recmd/
+# https://www.youtube.com/watch?v=tk9XsMHzPlM
+# https://www.youtube.com/watch?v=GhCZfCzn2l0
+# Uses the InstalledSoftware.reb batch command file. This file should also be in same directory as RECmd.exe
+# Note: --nl false replays transaction logs. If you don't want to replay transaction logs, change to --nl true.

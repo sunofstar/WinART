@@ -1,0 +1,388 @@
+<!--
+전자정보의 관련성에 관한 의견진술서
+-->
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>전자정보의 관련성에 관한 의견진술서</title>
+    <style>
+      @media print {
+        @page {
+          size: A4;
+          margin: 16pt 8pt;
+          page-break-after: always;
+        }
+        html {
+          font-size: 8pt;
+        }
+      }
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        font-weight: normal;
+        src:
+          local('NanumBarunGothic'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWeb.woff) format('woff'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWeb.ttf) format('truetype');
+      }
+      @font-face {
+        font-family: 'NanumBarunGothic';
+        font-weight: bold;
+        src:
+          local('NanumBarunGothicBold'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWebBold.woff) format('woff'),
+          url(../../MFAEasy/Html/analysis/css/font/NanumBarunGothicWebBold.ttf) format('truetype');
+      }
+      /* Common */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 10px;
+        word-break: break-all;
+      }
+      body {
+        color: #000;
+        font-family: 'NanumBareunGothic', 'Sans-serif', 'Malgun Gothic', '맑은 고딕', '돋움';
+        font-size: inherit;
+        font-weight: normal;
+        line-height: 1.2;
+        overflow: auto;
+        -webkit-font-smoothing: antialiased;
+        -webkit-print-color-adjust: exact;
+      }
+      table {
+        position: relative;
+        width: inherit;
+        border-spacing: 0;
+        border-collapse: collapse;
+        word-break: break-all;
+        table-layout: fixed;
+      }
+      header,
+      article,
+      section,
+      footer,
+      .wrapper,
+      .page_img {
+        position: relative;
+        display: block;
+        float: left;
+        width: 100%;
+      }
+      section {
+        margin-top: 2rem;
+      }
+      h1 {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        line-height: 3.6rem;
+        font-size: 2.6rem;
+        text-align: center;
+      }
+      h2 {
+        display: inline-block;
+        float: left;
+        width: 9.6rem;
+        height: 9.6rem;
+      }
+      h2 img {
+        width: 100%;
+        height: 100%;
+      }
+      .sign {
+        display: block;
+        height: 4rem;
+        font-size: 1.2rem;
+      }
+
+      /* header */
+
+      /* Content */
+      section pre {
+        line-height: 2.4rem;
+      }
+      .tit_area {
+        padding-bottom: 1.2rem;
+      }
+      .tit_area dl {
+        display: block;
+        float: left;
+        width: 100%;
+        line-height: 3rem;
+      }
+      .tit_area dt,
+      .tit_area dd {
+        display: inline-block;
+        float: left;
+        font-size: 1.8rem;
+      }
+      .tit_area dt {
+        font-weight: bold;
+      }
+      .tit_area dd {
+        max-width: calc(100% - 5rem);
+        padding-left: 1rem;
+      }
+      .cont_area {
+        padding-bottom: 2rem;
+        border-bottom: 0.1rem dotted #ccc;
+      }
+
+      .tbl_list_3 {
+        margin-top: 1rem;
+        text-align: left;
+        border: 0.1rem solid #d9d9d9;
+      }
+      .tbl_list_3 tr {
+        page-break-inside: avoid;
+      }
+      .tbl_list_3 tr:first-of-type > td {
+        padding-top: 0.1rem;
+      }
+      .tbl_list_3 tbody th {
+        font-size: 1.4rem;
+        text-align: center;
+      }
+      .tbl_list_3 tbody th,
+      td {
+        padding: 0.5rem;
+        border-right: 0.1rem solid #d9d9d9;
+        border-bottom: 0.1rem solid #d9d9d9;
+        line-height: 2.4rem;
+        font-weight: normal;
+        background: #fff;
+        word-break: keep-all;
+      }
+      .tbl_list_3 tbody td {
+        font-size: 1.3rem;
+      }
+      .tbl_list_3 tbody th.left {
+        text-align: left;
+      }
+      .tbl_list_3 tbody td.line-dot {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      .tbl_list_3 tbody td.line-dot > p {
+        border-bottom: 0.1rem dotted #d9d9d9;
+      }
+      .tbl_list_3 tbody td.line-dot > p:not(:first-child) > span {
+        opacity: 0;
+      }
+      .tbl_list_3 tbody td.line-dot > p:first-child > span {
+        color: #d9d9d9;
+      }
+      .tbl_list_3 tbody td.line-dot > p:last-child {
+        border: none;
+      }
+      .tbl_list_3 tbody td .space {
+        padding-left: 3.25rem;
+      }
+      .tbl_list_3 tbody td .date {
+        text-align: center;
+        line-height: 2.8rem;
+      }
+      .tbl_list_3 tbody td .ssign {
+        display: flex;
+        justify-content: right;
+        width: 92%;
+        line-height: 2.8rem;
+      }
+      .tbl_list_3 tbody td .ssign span:first-child {
+        display: inline-block;
+        width: 55%;
+      }
+      .report {
+        float: left;
+        width: 100%;
+      }
+
+      .report_page {
+        width: 760px;
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="report">
+      <div class="report_page">
+        <header>
+          <div class="sign">[별지 제14호 서식] 전자정보의 관련성에 관한 의견진술서</div>
+          <h1>【 전자정보의 관련성에 관한 의견진술서 】</h1>
+        </header>
+        <article>
+          <table class="tbl_list_3">
+            <colgroup>
+              <col width="16%" />
+              <col width="16%" />
+              <col width="*" />
+              <col width="16%" />
+              <col width="*" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <th rowspan="2">의견진술인</th>
+                <th colspan="1" class="align">성 &nbsp;&nbsp;&nbsp; 명</th>
+                <td colspan="1"><!--confiscatedName--></td>
+                <th colspan="1">생 년 월 일</th>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <th colspan="1">연 락 처</th>
+                <td colspan="1"><!--confiscatedNumber--></td>
+                <th colspan="1">사건과의 관계</th>
+                <td colspan="1"></td>
+              </tr>
+              <tr>
+                <th rowspan="4">
+                  의견진술
+                  <br />
+                  대상
+                  <br />
+                  전자정보
+                </th>
+                <th colspan="1">매체 종류</th>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <th colspan="1">제조사, 모델</th>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <th colspan="1">이미지 파일명</th>
+                <td colspan="3"><!--caseImgName--></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <span>
+                    20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;00:00&nbsp;부터
+                  </span>
+                  &nbsp;&nbsp;
+                  <span>
+                    20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.&nbsp;&nbsp;00:00&nbsp;까지
+                  </span>
+                  <br />
+                  <span>
+                    (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)에서
+                  </span>
+                  <span>집행한 위 매체에 기억된 전자정보 중 일부</span>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="5" class="left">
+                  <p>
+                    &#9678; 참여권 보장에 관한 의견 유무 &#40;&nbsp;
+                    <span>있음 □</span>
+                    &#47;
+                    <span>없음 □</span>
+                    &nbsp;&#41;
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td colspan="5" class="line-dot">
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="5" class="left">
+                  <p>
+                    &#9678; 전부 복제본 또는 매체 원본 반출에 관한 의견 유무 &#40;&nbsp;
+                    <span>있음 □</span>
+                    &#47;
+                    <span>없음 □</span>
+                    &nbsp;&#41;
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td colspan="5" class="line-dot">
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <th colspan="5" class="left">
+                  <p>
+                    &#9678; 개개 전자정보의 압수에 관한 의견 유무 &#40;&nbsp;
+                    <span>있음 □</span>
+                    &#47;
+                    <span>없음 □</span>
+                    &nbsp;&#41;
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td colspan="5" class="line-dot">
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                  <p>
+                    <span>&nbsp;&nbsp;(의견 기재)</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5">
+                  <p class="space">
+                    위 의견진술인은 위 일시, 장소에서 있었던 전자정보에 대한 압수‧수색‧검증과 관련하여 위와 같이 의견을
+                    진술합니다.
+                  </p>
+                  <p class="date">
+                    20&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp . &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp .
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp .
+                  </p>
+                  <p class="ssign">
+                    <span>위 작성자 :</span>
+                    <span>(서명)</span>
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

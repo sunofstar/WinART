@@ -1,0 +1,36 @@
+.tbl-data,
+.tbl-list {
+  thead {
+    tr th {
+      background: #5c5e62;
+      border-color: rgba(245, 250, 255, 0.2);
+    }
+  }
+  tbody {
+    tr {
+      th,
+      td {
+        border-color: rgba(245, 250, 255, 0.2);
+      }
+
+      th {
+        background: rgba(245, 250, 255, 0.2);
+
+        &.th__table-data--empty {
+          background-color: transparent;
+          border-right: none;
+
+          & + td {
+            border-left: none;
+          }
+        }
+      }
+
+      td {
+        .input__table-data--date-info {
+          color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+  }
+}
