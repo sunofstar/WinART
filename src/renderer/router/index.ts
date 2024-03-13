@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
   } else {
     const userStore = useUserStore()
     if (!userStore.isLogin) {
-      return next({ path: '/login' })
+      return next({ path: '/parent' })
     } else {
       return next()
     }

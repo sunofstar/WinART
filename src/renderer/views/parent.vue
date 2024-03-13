@@ -241,10 +241,10 @@ onBeforeUnmount(() => {
 
 <template>
   <header class="login-header">
-    <dl>
+    <!-- <dl>
       <dt color="info" class="mr-3">현재시간</dt>
       <dd>{{ formattedTime }}</dd>
-    </dl>
+    </dl> -->
     <!-- <div class="connection-info">
       <q-btn
         v-show="userStatus == 'offline_auth_required'"
@@ -262,8 +262,26 @@ onBeforeUnmount(() => {
   </header>
   <div class="login-container">
     <div class="login-form">
-      <q-img :ratio="1" src="@renderer/assets/images/logo_winart_mark.svg" alt="logo_winart_mark"></q-img>
-      <q-img src="@renderer/assets/images/logo_winart_letter.svg" alt="logo_winart_mark"></q-img>
+      <!-- <q-img :ratio="1" src="@renderer/assets/images/logo_winart_mark.svg" alt="logo_winart_mark"></q-img>
+      <q-img src="@renderer/assets/images/logo_winart_letter.svg" alt="logo_winart_mark"></q-img> -->
+      <div class="section">
+    <div>
+      <label for="key">Key:</label>
+      <input type="text">
+    
+      <label for="value">Value:</label>
+      <input type="text">
+    </div>
+    <div>
+      <button>Add</button>
+      <button>Delete</button>
+      <button>Child</button>
+      <button>Apply</button>
+    </div>
+    <div>
+      <textarea style="width: 50%; height: 150px;"></textarea>
+    </div>
+  </div>
       <q-form>
         <!-- <q-input ref="loginIdRef" v-model="loginId" :rules="[requiredRule]" label="아이디" outlined />
         <q-input
@@ -304,6 +322,14 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
+.section > * {
+    margin-bottom: 20px;
+  }
+
+  /* 라벨과 입력 필드 사이 간격 조정 */
+  label {
+    margin-right: 10px;
+  }
 .login-header {
   display: flex;
   flex-direction: row;
@@ -341,54 +367,54 @@ onBeforeUnmount(() => {
   height: calc(100% - 3.125rem);
   padding-top: 5.625rem;
   justify-content: center;
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    width: 24rem;
-    .q-img {
-      width: 15rem;
-    }
-    p {
-      font-size: 1.125rem;
-      margin: 2rem 0 0;
-    }
-    .q-form {
-      width: 100%;
-      margin-top: 2.75rem;
-      .q-input {
-        margin-top: 1rem;
-        &.q-field--labeled .q-field__native {
-          padding-top: 1.25rem !important;
-        }
-        &.q-field--float .q-field__label {
-          transform: translateY(-60%) scale(0.75);
-        }
-      }
-      .btn-login {
-        margin-top: 1rem;
-        width: 100%;
-        height: 3.75rem;
-        font-size: 1.125rem;
-        font-weight: 700;
-      }
-      .user-setting {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 0.625rem;
-        font-size: 1rem;
-        .q-btn {
-          padding: 0;
-          font-size: 1rem;
-        }
-        .q-btn:deep(.q-icon) {
-          font-size: 1.25rem;
-          margin-right: 0.5rem;
-        }
-      }
-    }
-  }
+  // .login-form {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-content: center;
+  //   align-items: center;
+  //   width: 24rem;
+  //   .q-img {
+  //     width: 15rem;
+  //   }
+  //   p {
+  //     font-size: 1.125rem;
+  //     margin: 2rem 0 0;
+  //   }
+  //   .q-form {
+  //     width: 100%;
+  //     margin-top: 2.75rem;
+  //     .q-input {
+  //       margin-top: 1rem;
+  //       &.q-field--labeled .q-field__native {
+  //         padding-top: 1.25rem !important;
+  //       }
+  //       &.q-field--float .q-field__label {
+  //         transform: translateY(-60%) scale(0.75);
+  //       }
+  //     }
+  //     .btn-login {
+  //       margin-top: 1rem;
+  //       width: 100%;
+  //       height: 3.75rem;
+  //       font-size: 1.125rem;
+  //       font-weight: 700;
+  //     }
+  //     .user-setting {
+  //       display: flex;
+  //       justify-content: space-between;
+  //       margin-top: 0.625rem;
+  //       font-size: 1rem;
+  //       .q-btn {
+  //         padding: 0;
+  //         font-size: 1rem;
+  //       }
+  //       .q-btn:deep(.q-icon) {
+  //         font-size: 1.25rem;
+  //         margin-right: 0.5rem;
+  //       }
+  //     }
+  //   }
+  // }
   .alert-capslock {
     display: flex;
     flex-direction: row;
