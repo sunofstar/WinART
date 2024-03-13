@@ -17,7 +17,14 @@ import electronApi from '@renderer/api/electronApi' // ElectronAPI
 import commonApi from '@renderer/api/commonApi' // IpcRenderer
 import loginApi from '@renderer/api/loginApi'
 
-import { USER_STATUS, UserAuthInfo, DB_QUERY_PARAM, DB_PROGRESS_PARAM, DB_CASEINFO_ITEM, DB_CASEINFO_OPR } from '@share/models'
+import {
+  USER_STATUS,
+  UserAuthInfo,
+  DB_QUERY_PARAM,
+  DB_PROGRESS_PARAM,
+  DB_CASEINFO_ITEM,
+  DB_CASEINFO_OPR
+} from '@share/models'
 import { useStoreResetExceptSystem } from '@renderer/stores'
 import { KAPE_OP_CHANNELS } from '@share/constants' // viper
 
@@ -65,7 +72,10 @@ const testDBRead = async (): Promise<void> => {
   console.log('### call Test-DB ####')
   //[1] 반드시 먼저 DB 파일을 절대 경로로 설정하여 connection을 만들어야 함
   //const re_0 = '_000'
-  const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, 'C:\\Temp3\\77_short\\트리아제테스트\\WinART\\20240223160155\\Temp\\DB\\art_트리아제테스트.db')
+  const re_0 = await window.ipcRenderer.invoke(
+    KAPE_OP_CHANNELS.setDBName,
+    'C:\\Temp3\\77_short\\트리아제테스트\\WinART\\20240223160155\\Temp\\DB\\art_트리아제테스트.db'
+  )
   if (re_0 === '_000') {
     let _data: DB_CASEINFO_ITEM[] = []
     let item: DB_CASEINFO_ITEM = { _key: '', _value: '' }
@@ -167,6 +177,7 @@ async function postLoginProcess(userStatus: USER_STATUS): Promise<void> {
  *
  * @returns 성공여부
  */
+//ㅇㄴㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁ
 function formValidate(): boolean {
   loginIdRef.value?.validate()
   loginPwRef.value?.validate()
