@@ -1,25 +1,34 @@
 <template>
-    <div>
-      <div class="input-section">
-        <label for="state">state:</label>
-        <input type="text" id="state">
-      </div>
-      <div class="textarea-section">
-        <textarea style="width: 50%; height: 200px;"></textarea>
-      </div>
-      <div class="input-section">
-        <label for="key">Key:</label>
-        <input type="text" id="key">
-        <label for="value">Value:</label>
-        <input type="text" id="value">
-      </div>
-      <div class="button-section">
-        <button>change</button>
-      </div>
+  <div>
+    <div class="input-section">
+      <label>state:</label>
+      <input type="text" v-model="injectState">
     </div>
-  </template>
-  
-  <script setup>
-  
-  </script>
-  
+    <div class="textarea-section">
+      <textarea style="width: 50%; height: 200px;" v-model="injectData"></textarea>
+    </div>
+    <div class="input-section">
+      <label>Key:</label>
+      <input type="text" v-model="grandChildKey">
+      <label>Value:</label>
+      <input type="text" v-model="grandChildValue">
+    </div>
+    <div>
+      <button @click="sendEmitFromGrandChild">change</button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { inject, ref, defineEmits } from 'vue'
+const provideData = inject<{data: any, state: any}>('parentProvideData')
+const injectData = ref(provideData?.data)
+const injectState = ref(provideData?.state)
+const grandChildKey = ref<string>('')
+const grandChildValue = ref<string>('')
+const emit = defineEmits(['grandChildEmitData'])
+
+const sendEmitFromGrandChild = () => {
+  emit('grandChildEmitData', {grandChildKey: grandChildKey.value, grandChildValue: grandChildValue.value})
+}
+</script>
