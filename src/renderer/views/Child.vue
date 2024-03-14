@@ -1,6 +1,5 @@
 <template>
-    <GrandChild @grandChildEmitData="sendEmitFromChild" />
-    dsadasdasd
+  <GrandChild @grandChildEmitData="sendEmitFromChild" />
 </template>
 
 <script setup lang="ts">
@@ -10,6 +9,6 @@ import { defineEmits } from 'vue'
 const emit = defineEmits(['childEmitData'])
 
 const sendEmitFromChild = (data) => {
-    emit('childEmitData', data)
+  emit('childEmitData', data)
 }
 </script>

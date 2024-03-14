@@ -29,6 +29,8 @@ import { useStoreResetExceptSystem } from '@renderer/stores'
 import { KAPE_OP_CHANNELS } from '@share/constants' // viper
 import { storeToRefs } from 'pinia'
 import { RFC_2822 } from 'moment'
+import ChildView from './Child.vue'
+import ChildSiblingView from './ChildSibling.vue'
 
 /**********************************************
  * @description Define variables
@@ -49,14 +51,16 @@ let param: DB_CASEINFO_OPR = {
   data: _data
 }
 let re: String = ''
+const seletedData = ref('fdafsda')
+const keyData = ref('')
+const valueData = ref('')
+const isShowChild = ref(false)
+const isShowChildSibling = ref(false)
 
 /**
  * 진행되던 모든 설정을 초기화 하는 함수
  */
 function init() {
-  deleteData('key데이터')
-  addData('key데이터', 'value데이터')
-  updateData('key데이터', '수정된value데이터')
   seletData()
 }
 
@@ -70,20 +74,19 @@ const seletData = async (): Promise<void> => {
     param = transformData('', '', 'REF')
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS SELECT!!:', re)
+    seletedData.value = JSON.stringify(re.data)
   } else {
     console.log('SELECT FAIL:', re_0)
   }
 }
 /**
  * DB에 값을 넣어주는 함수
- * @param {string} _key : key 데이터
- * @param {string} _value : value 데이터
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
-const addData = async (_key: String, _value: String): Promise<void> => {
+const addData = async (): Promise<void> => {
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
-    param = transformData(_key, _value, 'ADD')
+    param = transformData(keyData.value, valueData.value, 'ADD')
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS INSERT!!:', re)
   } else {
@@ -93,13 +96,12 @@ const addData = async (_key: String, _value: String): Promise<void> => {
 
 /**
  * DB에 해당 값을 삭제하는 함수
- * @param {string} _key : 삭제할 데이터의 key값
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
-const deleteData = async (_key: String): Promise<void> => {
+const deleteData = async (): Promise<void> => {
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
-    param = transformData(_key, '', 'DEL')
+    param = transformData(keyData.value, '', 'DEL')
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS DELETE!!:', re)
   } else {
@@ -130,7 +132,7 @@ const updateData = async (_key: String, _value: String): Promise<void> => {
  * @param {number} type : DB에 수행할 작업
  * @return {op: String, data: []} param : DB에 작업을 수행할 데이터
  */
-function transformData(_key: String, _value: String, type: String) {
+const transformData = (_key: String, _value: String, type: String) => {
   item._key = _key
   item._value = _value
   _data.splice(1, 1, item)
@@ -141,13 +143,29 @@ function transformData(_key: String, _value: String, type: String) {
   return transformedParam
 }
 
-onMounted(async () => {
-  return null
-})
+const showChild = () => {
+  isShowChild.value = !isShowChild.value
+  console.log('isShowChild 클릭')
+}
 
-onBeforeUnmount(() => {
-  return null
-})
+const showChildSibling = () => {
+  isShowChildSibling.value = !isShowChildSibling.value
+  console.log('isShowChildSibling 클릭')
+}
+
+// const showChild = () => {
+//   // router.push('/child')
+//   isShowChild = true
+//   console.log('isShowChild 클릭')
+// }
+
+// onMounted(async () => {
+//   return null
+// })
+
+// onBeforeUnmount(() => {
+//   return null
+// })
 </script>
 
 <template>
@@ -156,25 +174,31 @@ onBeforeUnmount(() => {
     <div class="login-form">
       <div class="section">
         <div>
-          <label for="key">Key:</label>
-          <input type="text" />
+          <label>Key:</label>
+          <input type="text" v-model="keyData" />
 
-          <label for="value">Value:</label>
-          <input type="text" />
+          <label>Value:</label>
+          <input type="text" v-model="valueData" />
         </div>
         <div>
           <button @click="addData">Add</button>
           <button @click="deleteData">Delete</button>
-          <button @Click="showChild">Child</button>
-          <button @Click="updateData">Apply</button>
+          <button @click="showChild">Child</button>
+          <button @click="showChildSibling">ChildSibling</button>
+          <button @click="updateData">Apply</button>
         </div>
         <div>
-          <textarea style="width: 50%; height: 150px"></textarea>
+          <textarea style="width: 100%; height: 150px" v-model="seletedData"></textarea>
         </div>
       </div>
-      <q-form>
-        <q-btn class="btn-login on-left" @click="init">Init</q-btn>
-      </q-form>
+      <ChildView v-show="isShowChild" />
+      <!-- <ChildSiblingView v-show="isShowChildSibling" /> -->
+      <div class="section">
+        <q-form>
+          <q-btn class="btn-login on-left" @click="init">Init</q-btn>
+        </q-form>
+      </div>
+      <!-- <ChildSiblingView></ChildSiblingView> -->
     </div>
   </div>
 </template>
