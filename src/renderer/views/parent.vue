@@ -57,6 +57,8 @@ const valueData = ref('')
 const isShowChild = ref(false)
 const isShowChildSibling = ref(false)
 const nowState = ref('')
+const childKeyData = ref('')
+const childValueData = ref('')
 
 provide('parentProvideData', { nowState, seletedData })
 
@@ -72,7 +74,7 @@ function init() {
  * DB의 값을 검색하는 함수
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
-const seletData = async (): Promise<void> => {
+const selectData = async (): Promise<void> => {
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
     param = transformData('', '', 'REF')
@@ -94,6 +96,7 @@ const addData = async (): Promise<void> => {
     param = transformData(keyData.value, valueData.value, 'ADD')
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS INSERT!!:', re)
+    selectData()
   } else {
     console.log('INSERT FAIL:', re_0)
   }
@@ -110,6 +113,7 @@ const deleteData = async (): Promise<void> => {
     param = transformData(keyData.value, '', 'DEL')
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS DELETE!!:', re)
+    selectData()
   } else {
     console.log('DELETE FAIL:', re_0)
   }
@@ -117,17 +121,16 @@ const deleteData = async (): Promise<void> => {
 
 /**
  * DB에 해당 값을 수정하는 함수
- * @param {string} _key : 수정할 데이터의 key값
- * @param {string} _value : 수정할 데이터의 value값
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
-const updateData = async (_key: String, _value: String): Promise<void> => {
+const updateData = async (): Promise<void> => {
   nowState.value = 'updateData'
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
-    param = transformData(_key, _value, 'MOD')
+    param = transformData(childKeyData.value, childValueData.value, 'MOD')
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS UPDATE!!:', re)
+    selectData()
   } else {
     console.log('UPDATE FAIL:', re_0)
   }
@@ -150,49 +153,57 @@ const transformData = (_key: String, _value: String, type: String) => {
   return transformedParam
 }
 
-const event = (data: { grandChildKey: string, grandChildValue: string }): void => {
-  console.log(data)
-  console.log(data.grandChildKey, data.grandChildValue)
-  keyData.value = data.grandChildKey
-  valueData.value = data.grandChildValue
-
-
-}
-
+/**
+ * ChildView를 보여주는 함수
+ * @return {void}
+ */
 const showChild = () => {
   isShowChild.value = !isShowChild.value
   console.log('isShowChild 클릭')
 }
-
+/**
+ * ChildSiblingView를 보여주는 함수
+ * @return {void}
+ */
 const showChildSibling = () => {
   isShowChildSibling.value = !isShowChildSibling.value
   console.log('isShowChildSibling 클릭')
 }
 
-// const showChild = () => {
-//   // router.push('/child')
-//   isShowChild = true
-//   console.log('isShowChild 클릭')
-// }
+/**
+ * Child에서 보낸 값을 처리하는 함수
+ * @return {void}
+ */
+const recieveChildEmitData = (data) => {
+  childKeyData.value = data.grandChildKey
+  childValueData.value = data.grandChildValue
+  console.log('childKeyData===>', childKeyData.value)
+  console.log('childValueData===>', childValueData.value)
+}
+/**
+ * ChildSibling에서 보낸 값을 처리하는 함수
+ * @return {void}
+ */
+const recieveChildSiblingEmitData = (data) => {
+  childKeyData.value = data.siblingKey
+  childValueData.value = data.siblingValue
+  console.log('childSiblingKeyData===>', childKeyData.value)
+  console.log('childSiblingValueData===>', childValueData.value)
+}
 
-// onMounted(async () => {
-//   return null
-// })
-
-// onBeforeUnmount(() => {
-//   return null
-// })
+onMounted(() => {
+  selectData()
+})
 </script>
 
 <template>
-  <header class="login-header"></header>
   <div class="login-container">
     <div class="login-form">
+      <h4>ParentView</h4>
       <div class="section">
         <div>
           <label>Key:</label>
           <input type="text" v-model="keyData" />
-
           <label>Value:</label>
           <input type="text" v-model="valueData" />
         </div>
@@ -207,13 +218,13 @@ const showChildSibling = () => {
           <textarea style="width: 100%; height: 150px" v-model="seletedData"></textarea>
         </div>
       </div>
-      <ChildView @childEmitData="event" v-show="isShowChild" />
-      <ChildSiblingView @siblingEmitData="console.log(1)" :nowState="nowState" :seletedData="seletedData" v-show="isShowChildSibling" />
-      <div class="section">
-        <q-form>
-          <q-btn class="btn-login on-left" @click="init">Init</q-btn>
-        </q-form>
-      </div>
+      <ChildView @childEmitData="recieveChildEmitData" v-show="isShowChild" />
+      <ChildSiblingView
+        @siblingEmitData="recieveChildSiblingEmitData"
+        :nowState="nowState"
+        :seletedData="seletedData"
+        v-show="isShowChildSibling"
+      />
     </div>
   </div>
 </template>

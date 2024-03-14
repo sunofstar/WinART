@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div style="border: 1px solid red">
+    <h4>ChildSiblingView</h4>
     <div class="input-section">
-      <label>cstate:</label>
+      <label>state:</label>
       <input type="text" v-model="propsState" />
     </div>
     <div class="textarea-section">
-      <textarea style="width: 50%; height: 200px">{{ props.seletedData }}</textarea>
+      <textarea style="width: 100%; height: 150px" v-model="propsData"></textarea>
     </div>
     <div class="input-section">
       <label>Key:</label>
@@ -34,13 +35,15 @@ const siblingKey = ref<string>('')
 const siblingValue = ref<string>('')
 
 const sendEmitToParent = () => {
-  console.log(props)
   emit('siblingEmitData', { siblingKey: siblingKey.value, siblingValue: siblingValue.value })
 }
 
 // nowState가 변경될 때마다 propsState 업데이트
-watch(() => props.nowState, (newValue) => {
-  propsState.value = newValue
-})
+watch(
+  () => props,
+  (newValue) => {
+    propsState.value = newValue.nowState
+    propsData.value = newValue.seletedData
+  }
+)
 </script>
-
