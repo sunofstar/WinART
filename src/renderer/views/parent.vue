@@ -6,7 +6,7 @@
  * @description Import
  */
 import dayjs from 'dayjs'
-import { onBeforeUnmount, onMounted, Ref, ref } from 'vue'
+import { onBeforeUnmount, onMounted, Ref, ref, provide } from 'vue'
 import { useRouter } from 'vue-router'
 import { QInput, useQuasar } from 'quasar'
 import { requiredRule } from '@renderer/utils/validationRules'
@@ -56,12 +56,16 @@ const keyData = ref('')
 const valueData = ref('')
 const isShowChild = ref(false)
 const isShowChildSibling = ref(false)
+const nowState = ref('')
+
+provide('parentProvideData', { nowState, seletedData })
 
 /**
  * 진행되던 모든 설정을 초기화 하는 함수
  */
 function init() {
   seletData()
+  nowState.value = 'init'
 }
 
 /**
@@ -84,6 +88,7 @@ const seletData = async (): Promise<void> => {
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
 const addData = async (): Promise<void> => {
+  nowState.value = 'addData'
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
     param = transformData(keyData.value, valueData.value, 'ADD')
@@ -99,6 +104,7 @@ const addData = async (): Promise<void> => {
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
 const deleteData = async (): Promise<void> => {
+  nowState.value = 'deleteData'
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
     param = transformData(keyData.value, '', 'DEL')
@@ -116,6 +122,7 @@ const deleteData = async (): Promise<void> => {
  * @return Promise<void> 성공 여부를 담은 Promise 객체
  */
 const updateData = async (_key: String, _value: String): Promise<void> => {
+  nowState.value = 'updateData'
   const re_0 = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.setDBName, dbUrl)
   if (re_0 === success) {
     param = transformData(_key, _value, 'MOD')
@@ -141,6 +148,15 @@ const transformData = (_key: String, _value: String, type: String) => {
     data: _data
   }
   return transformedParam
+}
+
+const event = (data: { grandChildKey: string, grandChildValue: string }): void => {
+  console.log(data)
+  console.log(data.grandChildKey, data.grandChildValue)
+  keyData.value = data.grandChildKey
+  valueData.value = data.grandChildValue
+
+
 }
 
 const showChild = () => {
@@ -191,14 +207,13 @@ const showChildSibling = () => {
           <textarea style="width: 100%; height: 150px" v-model="seletedData"></textarea>
         </div>
       </div>
-      <ChildView v-show="isShowChild" />
-      <!-- <ChildSiblingView v-show="isShowChildSibling" /> -->
+      <ChildView @childEmitData="event" v-show="isShowChild" />
+      <ChildSiblingView @siblingEmitData="console.log(1)" :nowState="nowState" :seletedData="seletedData" v-show="isShowChildSibling" />
       <div class="section">
         <q-form>
           <q-btn class="btn-login on-left" @click="init">Init</q-btn>
         </q-form>
       </div>
-      <!-- <ChildSiblingView></ChildSiblingView> -->
     </div>
   </div>
 </template>

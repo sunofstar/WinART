@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="input-section">
-      <label>state:</label>
+      <label>cstate:</label>
       <input type="text" v-model="propsState" />
     </div>
     <div class="textarea-section">
@@ -21,15 +21,22 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits, ref } from 'vue'
+
 const emit = defineEmits(['siblingEmitData'])
-const props = defineProps<{ data: any; state: any }>('parentPropsData')
-const propsData = ref(props.parentPropsData)
-const propsState = ref(props.parentPropsState)
+const props = defineProps<{
+  nowState: any,
+  seletedData: any
+}>()
+
+// props로부터 값을 가져와 ref로 초기화합니다.
+const propsData = ref(props?.seletedData)
+const propsState = ref(props?.nowState)
 const siblingKey = ref<string>('')
 const siblingValue = ref<string>('')
 
 const sendEmitToParent = () => {
-  // 부모 컴포넌트로 데이터를 전달합니다.
+  console.log(props)
   emit('siblingEmitData', { siblingKey: siblingKey.value, siblingValue: siblingValue.value })
 }
 </script>
+
