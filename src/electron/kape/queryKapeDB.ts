@@ -59,13 +59,12 @@ export class queryKapeDB {
   protected timeLineTmpInsertSQL =
     'INSERT INTO Total_Timeline_Tmp (t_dateTime, t_attribute, t_timelineCategory, t_category, t_type, t_itemName, t_itemValue, t_tableName, t_tableId, category_1, category_2, category_3, t_main ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
 
-  // 통합DB 생성할 때 호출하는 SQL문  
+  // 통합DB 생성할 때 호출하는 SQL문
   protected timeLine_Sorted_InsertSQL =
     'INSERT INTO Total_Timeline (t_dateTime, t_attribute, t_timelineCategory, t_category, t_type, t_itemName, t_itemValue, t_tableName, t_tableId, category_1, category_2, category_3, t_main) select t_dateTime, t_attribute, t_timelineCategory, t_category, t_type, t_itemName, t_itemValue, t_tableName, t_tableId, category_1, category_2, category_3, t_main FROM Total_Timeline_Tmp order by t_dateTime, category_1, category_2, category_3'
-  
+
   // 타임라인 그리드에서 사용자가 시간만 조건을 입력하고 chart를 호출하면 만들어야야 하는 테이블
-  protected timeLine_GotoInfo_time_InsertSQL =
-    `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
+  protected timeLine_GotoInfo_time_InsertSQL = `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
             select t_id, t_dateTime, category_1, category_2, category_3 
               FROM Total_Timeline 
               WHERE t_dateTime is not null AND
@@ -73,25 +72,23 @@ export class queryKapeDB {
             order by t_dateTime, category_1, category_2, category_3`
 
   // 타임라인 그리드에서 사용자가 시간과 범주 두개의 조건을 입력하고 chart를 호출하면 만들어야야 하는 테이블
-  protected timeLine_GotoInfo_time_category_InsertSQL =
-    `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
+  protected timeLine_GotoInfo_time_category_InsertSQL = `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
                     select t_id, t_dateTime, category_1, category_2, category_3 
                       FROM Total_Timeline 
                       WHERE t_dateTime is not null AND
                       (t_dateTime >= ? AND t_dateTime <= ?) AND
                       category_1 IN (?)
                     order by t_dateTime, category_1, category_2, category_3`
-  
+
   // 타임라인 그리드에서 사용자가 범주  조건을 입력하고 chart를 호출하면 만들어야야 하는 테이블
-  protected timeLine_GotoInfo_category_InsertSQL =
-  `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
+  protected timeLine_GotoInfo_category_InsertSQL = `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
                   select t_id, t_dateTime, category_1, category_2, category_3 
                     FROM Total_Timeline 
                     WHERE t_dateTime is not null AND
                     category_1 IN (?)
                   order by t_dateTime, category_1, category_2, category_3`
 
-  // 통합DB 생성할 때, 호출되는 SQL문                  
+  // 통합DB 생성할 때, 호출되는 SQL문
   protected timeLine_Short2_InsertSQL = `INSERT INTO Total_Timeline_Short2 (t_dateTime, category_1, category_2, c_count) select substr(t_dateTime, 1, 13)||':00:00' as t_dateTime, category_1, category_2, count(*) as c_count
           from 
             total_timeline
@@ -102,10 +99,9 @@ export class queryKapeDB {
           order by substr(t_dateTime, 1, 13), category_1, category_2`
 
   // 아래의 조건을 수행하기 전에 기존 데이터를 무조건 삭제해야 한다
-  protected timeLine_Short2_DeleteSQL = `DELETE FROM Total_Timeline_Short2`     
-  protected timeLine_ShortTemp_DeleteSQL = `DELETE FROM Total_Timeline_ShortTemp` 
-  protected timeLine_GotoInfo_DeleteSQL = `DELETE FROM Total_Timeline_GotoInfo`       
-
+  protected timeLine_Short2_DeleteSQL = `DELETE FROM Total_Timeline_Short2`
+  protected timeLine_ShortTemp_DeleteSQL = `DELETE FROM Total_Timeline_ShortTemp`
+  protected timeLine_GotoInfo_DeleteSQL = `DELETE FROM Total_Timeline_GotoInfo`
 
   // 타임라인 chart에 보여질 데이터의 초기 데이터 생성하는 것 -> 이것은 Total_Timeline_Short2 읽어서 Total_Timeline_Short에 넣는 것
   protected timeLine_Short_InsertSQL = `INSERT INTO Total_Timeline_Short (t_dateTime, category_1, c_count, detail) select t_dateTime, category_1, sum(c_count) as c_count, NULL
@@ -113,7 +109,7 @@ export class queryKapeDB {
           Total_Timeline_Short2
           group by t_dateTime, category_1
           order by t_dateTime, category_1`
-        
+
   // 사용자 요청에 의한 특정 데이터들만 타임라인 chart에 보여질 데이터의 초기 데이터 생성하는 것 -> 이것은 Total_Timeline_Short2 읽어서 Total_Timeline_ShortTemp에 넣는 것
   protected timeLine_Short_InsertSQL_from_ShortTemp = `INSERT INTO Total_Timeline_ShortTemp (t_dateTime, category_1, c_count, detail) select t_dateTime, category_1, sum(c_count) as c_count, NULL
           from 
@@ -402,27 +398,26 @@ export class queryKapeDB {
         createIndexTmp6.run()
         //////////////////////////////////////////////////////////////////////////////////////////////
 
-      ////////////////////////////////////////////////////////////////////////////// add 20240205
-      // [10] Total_Timeline_GotoInfo 테이블 생성, 타임라인 차트에서 기간 및 범주로 select되어진 데이터 set에서 어느 페이지에 존재하는지 확인하기 위한 테이블
-      const createTimeTableGotoInfo = this.kapedb.prepare(
-        `CREATE TABLE IF NOT EXISTS Total_Timeline_GotoInfo (temp_t_id INTEGER PRIMARY KEY AUTOINCREMENT, t_id integer, t_dateTime text, category_1  text,category_2  text,category_3  text)`
-      )
-      createTimeTableGotoInfo.run()
+        ////////////////////////////////////////////////////////////////////////////// add 20240205
+        // [10] Total_Timeline_GotoInfo 테이블 생성, 타임라인 차트에서 기간 및 범주로 select되어진 데이터 set에서 어느 페이지에 존재하는지 확인하기 위한 테이블
+        const createTimeTableGotoInfo = this.kapedb.prepare(
+          `CREATE TABLE IF NOT EXISTS Total_Timeline_GotoInfo (temp_t_id INTEGER PRIMARY KEY AUTOINCREMENT, t_id integer, t_dateTime text, category_1  text,category_2  text,category_3  text)`
+        )
+        createTimeTableGotoInfo.run()
 
-      // [11] idx_DateTimeOnly_Total_Timeline_Tmp
-      const createIndexGotoInfo = this.kapedb.prepare(
-        `CREATE INDEX IF NOT EXISTS idx_DateTimeOnly_Total_Timeline_GotoInfo ON Total_Timeline_GotoInfo (t_dateTime, category_1, category_2, category_3)`
-      )
-      createIndexGotoInfo.run()
+        // [11] idx_DateTimeOnly_Total_Timeline_Tmp
+        const createIndexGotoInfo = this.kapedb.prepare(
+          `CREATE INDEX IF NOT EXISTS idx_DateTimeOnly_Total_Timeline_GotoInfo ON Total_Timeline_GotoInfo (t_dateTime, category_1, category_2, category_3)`
+        )
+        createIndexGotoInfo.run()
 
-      // [12] Total_Timeline_ShortTemp table 생성 ( 기간 또는 범주로 조회한 결과를 timeline chart로 보기 위한 테이블 20240205)
-      // 이것을 만들기 위해서는 기존에 생성되어 있는 Total_Timeline_Short2를 재사용한다.
-      const createTimeTableShortTemp = this.kapedb.prepare(
-        `CREATE TABLE IF NOT EXISTS Total_Timeline_ShortTemp (t_dateTime text, category_1 text, c_count INTEGER, detail text, primary key (t_dateTime, category_1))`
-      )
-      createTimeTableShortTemp.run()
-      ///////////////////////////////////////////////////////////////////////////// end 20240205
-
+        // [12] Total_Timeline_ShortTemp table 생성 ( 기간 또는 범주로 조회한 결과를 timeline chart로 보기 위한 테이블 20240205)
+        // 이것을 만들기 위해서는 기존에 생성되어 있는 Total_Timeline_Short2를 재사용한다.
+        const createTimeTableShortTemp = this.kapedb.prepare(
+          `CREATE TABLE IF NOT EXISTS Total_Timeline_ShortTemp (t_dateTime text, category_1 text, c_count INTEGER, detail text, primary key (t_dateTime, category_1))`
+        )
+        createTimeTableShortTemp.run()
+        ///////////////////////////////////////////////////////////////////////////// end 20240205
       } catch (err) {
         console.error('CreateTimelineTable 중 오류 발생:', err)
         reject()
@@ -658,7 +653,9 @@ export class queryKapeDB {
       insertCreateDateInfo.run('first_create_datetime', formattedDateTime)
 
       // 무조건 생성이 되는 정보 triage key add 2024.02.23
-      const insertCreateDateInfoTriageInfo = this.kapedb.prepare(`insert or replace into Case_Info (key, value) values ('triage', '')`)
+      const insertCreateDateInfoTriageInfo = this.kapedb.prepare(
+        `insert or replace into Case_Info (key, value) values ('triage', '')`
+      )
       insertCreateDateInfoTriageInfo.run()
       //////////////////////////////////////////////////////////////////
     } catch (err) {
@@ -941,19 +938,18 @@ export class queryKapeDB {
             }
 
             // TableInfo.json의 파일에서 timeColNameUTC 항목에 존재하는 타임 필드는 모두 UTC 0 이므로 이걸 UTC 9으로 변경한다
-            // 각각의 추출된 데이터에서 시간 값을 변환해 준다. 
+            // 각각의 추출된 데이터에서 시간 값을 변환해 준다.
             // [중요] 변환할 항목이 없을 경우, 해당 컬럼을 [] 로 설정해야 한다.
-            if(data['timeColNameUTC'].length !== 0 ) {
+            if (data['timeColNameUTC'].length !== 0) {
               for (const row of dataToCopy) {
                 const timeColNameList = data['timeColNameUTC']
                 const idColName = 'a_id'
-  
+
                 let updateString = ''
                 let updateCount = 0
                 for (const timerow of timeColNameList) {
-
                   updateCount++
-  
+
                   const orgTime = row[timerow]
                   let convertedTime: string | null = ''
                   if (orgTime !== null && orgTime !== '' && orgTime !== undefined) {
@@ -961,9 +957,9 @@ export class queryKapeDB {
                   } else if (orgTime === null) {
                     convertedTime = null
                   }
-  
+
                   //row[timerow] = convertedTime
-  
+
                   // 데이터베이스 업데이트 쿼리
                   if (updateCount === 1) {
                     updateString += `\"${timerow}\" = '${convertedTime}'`
@@ -975,7 +971,7 @@ export class queryKapeDB {
                   // updateTable.run(convertedTime, row[idColName])
                   cnt++
                 } // end of inner for lloop
-  
+
                 const updateQuery = `UPDATE ${data['tablename']} SET ${updateString} WHERE ${idColName} = ?`
                 // if (updateCount === 1) {
                 //   // for log
@@ -983,17 +979,15 @@ export class queryKapeDB {
                 // }
                 const updateTable = this.kapedb.prepare(updateQuery)
                 updateTable.run(row[idColName])
-  
+
                 updatecount++
               } // end of outer for loop Paging단위로 select 한 결과에 대한 UTC 9 처리 모듈
             }
-            
+
             // for next page
             offset += this.CreateDBpageSize
           } // end of while
-
         } // End of Time컬럼 존재여부 =======> UTC0 -> UTC9으로 변경하는 모듈
-
       } // end of if 해당 테이블이 존재하여야 수행이 되게 하였음
 
       // 트랜잭션 커밋
@@ -1824,7 +1818,7 @@ export class queryKapeDB {
    * 타임라인 테이블 조건에 대한 레코드 개수 정보 전달
    * _Datetime이 not null인 데이터만 처리한다
    * DB 연결이 되어 있어야 한다.
-   * [주요참고사항] ### total_timeline 최종테이블은 기본적으로 ( ORDER BY t_dateTime, category_1, category_2, category_3 ) 소트되어 생성되기에, 사용할 때 t_id로 sort하면 된다. 
+   * [주요참고사항] ### total_timeline 최종테이블은 기본적으로 ( ORDER BY t_dateTime, category_1, category_2, category_3 ) 소트되어 생성되기에, 사용할 때 t_id로 sort하면 된다.
    * 결과 값은 -1 : 에러인 경우
    *          레코드 개수 : 성공인 경우
    */
@@ -1850,7 +1844,7 @@ export class queryKapeDB {
           re = sourceTable.get()
         } else {
           // [조건1] t_dateTime이 not null인 것 중
-          // [조건2] 특정 날짜의 
+          // [조건2] 특정 날짜의
           // 종 개수 count정보
           const query = `SELECT count(*) as total_cnt 
                           FROM Total_Timeline 
@@ -1862,8 +1856,8 @@ export class queryKapeDB {
       } else {
         // 기본적으로 특정 1차 범주에서 찾는 것이다.
         if (param._full_time_range_flag === true) {
-          // [조건 1] t_dateTime이 not null인 것 중, 
-          // [조건 2] 특정 범주1에 속한 
+          // [조건 1] t_dateTime이 not null인 것 중,
+          // [조건 2] 특정 범주1에 속한
           // 데이터의 총 개수
           const query = `SELECT count(*) as total_cnt 
                           FROM Total_Timeline 
@@ -1872,9 +1866,9 @@ export class queryKapeDB {
           const sourceTable = this.kapedb.prepare(query)
           re = sourceTable.get()
         } else {
-          // t_dateTime이 not null인 것 중, 
+          // t_dateTime이 not null인 것 중,
           // [조건1] : 특정 기간
-          // [조건2] : 특정 범주1에 속한 
+          // [조건2] : 특정 범주1에 속한
           // 데이터의 총 개수
           const query = `SELECT count(*) as total_cnt 
                           FROM Total_Timeline 
@@ -1900,7 +1894,6 @@ export class queryKapeDB {
    *          obj[] : 성공인 경우
    */
   syncCreaate_SelectContentTimelineShortTempTable(param: DB_TIMELINE_QUERY_INFO) {
-    
     let re: any[] | undefined = undefined
     let runRe: any | undefined = undefined
     let runRe2: any | undefined = undefined
@@ -1909,8 +1902,7 @@ export class queryKapeDB {
     this.kapedb.exec('BEGIN TRANSACTION')
 
     try {
-
-      // 기존 Total_Timeline_ShortTemp 테이블, 
+      // 기존 Total_Timeline_ShortTemp 테이블,
       const deleteTable = this.kapedb.prepare(this.timeLine_ShortTemp_DeleteSQL)
       runRe = deleteTable.run()
 
@@ -1924,9 +1916,7 @@ export class queryKapeDB {
       )
       dropIndexTimeTableGotoInfo.run()
 
-      const dropTableTimeTableGotoInfo = this.kapedb.prepare(
-        `DROP TABLE IF EXISTS Total_Timeline_GotoInfo`
-      )
+      const dropTableTimeTableGotoInfo = this.kapedb.prepare(`DROP TABLE IF EXISTS Total_Timeline_GotoInfo`)
       dropTableTimeTableGotoInfo.run()
 
       const createTimeTableGotoInfo = this.kapedb.prepare(
@@ -1946,7 +1936,7 @@ export class queryKapeDB {
       //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       // 조건에 맞는 데이터를 Total_Timeline 테이블에서 추출하여 Total_Timeline_Short2에 데이터를 넣는다.
-      if(param._full_search_flag === true && param._full_time_range_flag === false) {
+      if (param._full_search_flag === true && param._full_time_range_flag === false) {
         const _timeLine_Short2_InsertSQL_from_Time = `INSERT INTO Total_Timeline_Short2 (t_dateTime, category_1, category_2, c_count) select substr(t_dateTime, 1, 13)||':00:00' as t_dateTime, category_1, category_2, count(*) as c_count
                       from 
                         total_timeline
@@ -1959,8 +1949,7 @@ export class queryKapeDB {
         runRe = sourceTable.run(param._s_time, param._e_time)
 
         // 타임라인 그리드 위치를 알기위한 테이블 timeLine_GotoInfo 테이블에 자료 생성
-        const _timeLine_GotoInfo_time_InsertSQL =
-                    `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
+        const _timeLine_GotoInfo_time_InsertSQL = `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
                             select t_id, t_dateTime, category_1, category_2, category_3 
                               FROM Total_Timeline 
                               WHERE t_dateTime is not null AND
@@ -1981,8 +1970,7 @@ export class queryKapeDB {
         runRe = sourceTable.run()
 
         // 타임라인 그리드 위치를 알기위한 테이블 timeLine_GotoInfo 테이블에 자료 생성
-        const _timeLine_GotoInfo_category_InsertSQL =
-                    `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
+        const _timeLine_GotoInfo_category_InsertSQL = `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
                                     select t_id, t_dateTime, category_1, category_2, category_3 
                                       FROM Total_Timeline 
                                       WHERE t_dateTime is not null AND
@@ -1990,8 +1978,9 @@ export class queryKapeDB {
                                     order by t_dateTime, category_1, category_2, category_3`
         const sourceTable2 = this.kapedb.prepare(_timeLine_GotoInfo_category_InsertSQL)
         runRe2 = sourceTable2.run()
-      } else {    // if (param._full_search_flag === false && param._full_time_range_flag === false) 그리고 
-                  // (param._full_search_flag === true && param._full_time_range_flag === true) <== 이건 오면 안됨
+      } else {
+        // if (param._full_search_flag === false && param._full_time_range_flag === false) 그리고
+        // (param._full_search_flag === true && param._full_time_range_flag === true) <== 이건 오면 안됨
         const _timeLine_Short2_InsertSQL_from_Time_Category = `INSERT INTO Total_Timeline_Short2 (t_dateTime, category_1, category_2, c_count) select substr(t_dateTime, 1, 13)||':00:00' as t_dateTime, category_1, category_2, count(*) as c_count
                     from 
                       total_timeline
@@ -2005,8 +1994,7 @@ export class queryKapeDB {
         runRe = sourceTable.run(param._s_time, param._e_time)
 
         // 타임라인 그리드 위치를 알기위한 테이블 timeLine_GotoInfo 테이블에 자료 생성
-        const _timeLine_GotoInfo_time_category_InsertSQL =
-                  `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
+        const _timeLine_GotoInfo_time_category_InsertSQL = `INSERT INTO Total_Timeline_GotoInfo (t_id, t_dateTime, category_1, category_2, category_3) 
                                   select t_id, t_dateTime, category_1, category_2, category_3 
                                     FROM Total_Timeline 
                                     WHERE t_dateTime is not null AND
@@ -2069,9 +2057,7 @@ export class queryKapeDB {
       console.log('TotalTimelineShortTemp THIRD DONE')
 
       // 그리고 최종으로 전체 데이터를 전달.
-      const QueryAll = this.kapedb.prepare(
-        `select *  from Total_Timeline_ShortTemp`
-      )
+      const QueryAll = this.kapedb.prepare(`select *  from Total_Timeline_ShortTemp`)
       re = QueryAll.all()
 
       this.kapedb.exec('COMMIT')
@@ -2345,7 +2331,7 @@ export class queryKapeDB {
         } else {
           ///////////////////////////////////////////////////////////
           // 202302 에 결정된 가장 많이 요청되어 처리 되는 로직
-          // 
+          //
           // B_Id가 정의가 된 경우
           // B_Id가 존재할 경우에는 개수 정보가 북마크를 이용하지 않는 것과 동일하다. 1:1 mapping이기에...
           ///////////////////////////////////////////////////////////
@@ -2618,15 +2604,14 @@ export class queryKapeDB {
    * 결과 값은 undefined : 에러인 경우
    *          obj : 성공인 경우
    */
-  syncSelectMinTimelineGotoByCondition(param:DB_TIMELINE_QUERY_INFO) {
+  syncSelectMinTimelineGotoByCondition(param: DB_TIMELINE_QUERY_INFO) {
     let re_min: any | undefined = undefined
-    
 
     // 트랜잭션 시작
     this.kapedb.exec('BEGIN TRANSACTION')
 
     try {
-      if(param._full_search_flag === true && param._full_time_range_flag === false) {
+      if (param._full_search_flag === true && param._full_time_range_flag === false) {
         const query = `select temp_t_id, t_id 
                         from Total_Timeline_GotoInfo 
                         where t_dateTime >= ? 
@@ -2644,8 +2629,9 @@ export class queryKapeDB {
                       `
         const sourceTable = this.kapedb.prepare(query)
         re_min = sourceTable.get(param._categoryName)
-      } else {    // if (param._full_search_flag === false && param._full_time_range_flag === false) 그리고 
-                  // (param._full_search_flag === true && param._full_time_range_flag === true) <== 이건 오면 안됨
+      } else {
+        // if (param._full_search_flag === false && param._full_time_range_flag === false) 그리고
+        // (param._full_search_flag === true && param._full_time_range_flag === true) <== 이건 오면 안됨
         const query = `select temp_t_id, t_id 
                   from Total_Timeline_GotoInfo 
                   where category_1 = ? and
@@ -2654,7 +2640,7 @@ export class queryKapeDB {
                   LIMIT 1 OFFSET 0
                 `
         const sourceTable = this.kapedb.prepare(query)
-        re_min = sourceTable.get(param._categoryName,param._s_time)
+        re_min = sourceTable.get(param._categoryName, param._s_time)
       }
 
       this.kapedb.exec('COMMIT')
@@ -3453,64 +3439,59 @@ export class queryKapeDB {
     })
   }
 
-    /**
+  /**
    * 북마크 정보 변경에 대해 처리 할 레코드 개수는 무조건 1개이어야 한다.
-   * @param insertData 
-   * @returns 
+   * @param insertData
+   * @returns
    */
-    async asyncChangeWillDeleteBookMarkMapper(insertData: DB_BOOKMARK_MAPPER_INFO[]): Promise<ERROR_CODE> {
-      return new Promise<ERROR_CODE>((resolve, reject) => {
-      
-        if(insertData.length > 1 ) {
-          reject('D007')
-        } else {
-          
-          // 트랜잭션 시작
-          this.kapedb.exec('BEGIN TRANSACTION')
-      
-          try {
-            const bookmarkmapper = insertData[0]
+  async asyncChangeWillDeleteBookMarkMapper(insertData: DB_BOOKMARK_MAPPER_INFO[]): Promise<ERROR_CODE> {
+    return new Promise<ERROR_CODE>((resolve, reject) => {
+      if (insertData.length > 1) {
+        reject('D007')
+      } else {
+        // 트랜잭션 시작
+        this.kapedb.exec('BEGIN TRANSACTION')
 
-            // UPDATE 작업 수행
-            const query = `UPDATE BookMark_mapper 
+        try {
+          const bookmarkmapper = insertData[0]
+
+          // UPDATE 작업 수행
+          const query = `UPDATE BookMark_mapper 
                               SET will_delete = ?
                             WHERE b_id = ? AND b_tableName = ? AND b_tableId = ?
                           `
-            const stmt = this.kapedb.prepare(query)
-            const info = stmt.run(
+          const stmt = this.kapedb.prepare(query)
+          const info = stmt.run(
             bookmarkmapper._will_delete,
             bookmarkmapper._id,
             bookmarkmapper._tableName,
             bookmarkmapper._tableIdx
-            )
-  
-            this.kapedb.exec('COMMIT')
-            resolve('_000')
-          } catch (err) {
-            this.kapedb.exec('ROLLBACK')
-            console.error('asyncInsertBookMarkMapper 중 오류 발생:', err)
-            reject('D003')
-          }
-  
+          )
+
+          this.kapedb.exec('COMMIT')
+          resolve('_000')
+        } catch (err) {
+          this.kapedb.exec('ROLLBACK')
+          console.error('asyncInsertBookMarkMapper 중 오류 발생:', err)
+          reject('D003')
         }
-      }) // end of new Promise()
-    }
+      }
+    }) // end of new Promise()
+  }
 
   /**
    * 북마크로 추가해야 할 레코드 개수는 무조건 1개이어야 한다.
-   * @param insertData 
-   * @returns 
+   * @param insertData
+   * @returns
    */
   async asyncInsertBookMarkMapper(insertData: DB_BOOKMARK_MAPPER_INFO[]): Promise<ERROR_CODE> {
     return new Promise<ERROR_CODE>((resolve, reject) => {
-	  
-      if(insertData.length > 1 ) {
+      if (insertData.length > 1) {
         reject('D007')
       } else {
-        
         // 트랜잭션 시작
         this.kapedb.exec('BEGIN TRANSACTION')
-    
+
         try {
           for (let i = 0; i < insertData.length; i++) {
             const bookmarkmapper = insertData[i]
@@ -3528,7 +3509,6 @@ export class queryKapeDB {
               bookmarkmapper._category_2,
               bookmarkmapper._category_3
             )
-
           } // end of for loop
 
           this.kapedb.exec('COMMIT')
@@ -3538,49 +3518,44 @@ export class queryKapeDB {
           console.error('asyncInsertBookMarkMapper 중 오류 발생:', err)
           reject('D003')
         }
-
       }
     }) // end of new Promise()
   }
 
-/**
+  /**
    * 북마크로 삭제해야 할 레코드 개수는 무조건 1개이어야 한다.
-   * @param deleteData 
-   * @returns 
+   * @param deleteData
+   * @returns
    */
-async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<ERROR_CODE> {
-  return new Promise<ERROR_CODE>((resolve, reject) => {
-    
-    if(deleteData.length > 1 ) {
-      reject('D007')
-    } else {
-      
-      // 트랜잭션 시작
-      this.kapedb.exec('BEGIN TRANSACTION')
-  
-      try {
-        for (let i = 0; i < deleteData.length; i++) {
-          const bookmarkmapper = deleteData[i]
+  async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<ERROR_CODE> {
+    return new Promise<ERROR_CODE>((resolve, reject) => {
+      if (deleteData.length > 1) {
+        reject('D007')
+      } else {
+        // 트랜잭션 시작
+        this.kapedb.exec('BEGIN TRANSACTION')
 
-          // 전에 작업과 내용이 다르면 insert를 수행하고 같으면 skip --> PK조건에 위반을 피하기 위해 insert or ignore수행
-          const query = `DELETE FROM BookMark_mapper 
+        try {
+          for (let i = 0; i < deleteData.length; i++) {
+            const bookmarkmapper = deleteData[i]
+
+            // 전에 작업과 내용이 다르면 insert를 수행하고 같으면 skip --> PK조건에 위반을 피하기 위해 insert or ignore수행
+            const query = `DELETE FROM BookMark_mapper 
                               WHERE b_id = ? AND  b_tableName = ? and b_tableId = ?`
-          const stmt = this.kapedb.prepare(query)
-          stmt.run(bookmarkmapper._id, bookmarkmapper._tableName, bookmarkmapper._tableIdx)
+            const stmt = this.kapedb.prepare(query)
+            stmt.run(bookmarkmapper._id, bookmarkmapper._tableName, bookmarkmapper._tableIdx)
+          } // end of for loop
 
-        } // end of for loop
-
-        this.kapedb.exec('COMMIT')
-        resolve('_000')
-      } catch (err) {
-        this.kapedb.exec('ROLLBACK')
-        console.error('asyncDeleteBookMarkMapper 중 오류 발생:', err)
-        reject('D003')
+          this.kapedb.exec('COMMIT')
+          resolve('_000')
+        } catch (err) {
+          this.kapedb.exec('ROLLBACK')
+          console.error('asyncDeleteBookMarkMapper 중 오류 발생:', err)
+          reject('D003')
+        }
       }
-
-    }
-  }) // end of new Promise()
-}
+    }) // end of new Promise()
+  }
 
   /**
    * bookmark_mapper 테이블에 데이터를 입력하는 것
@@ -3685,7 +3660,7 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
     }
   }
 
-    /**
+  /**
    * bookmark_mapper 테이블에서 will_delete 필드 값이 1인 것을 삭제하는 구문
    * 해당 API는 시간이 오래 걸릴 수 있으므로 Thread로 동작하게 한다. 따라서, Sync로 만듦
    * @input : DB_BOOKMARK_MAPPER_INFO 객체의 배열
@@ -3693,41 +3668,37 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
    *           0 이상이면 sql정상 동작
    */
   DoWillDelBookMarkMapper(insertData: DB_BOOKMARK_MAPPER_INFO[]) {
-      let re: number
-      {
-        // 트랜잭션 시작
-        this.kapedb.exec('BEGIN TRANSACTION')
-  
-        re = 0
-        try {
-          
-          const bookmarkmapper = insertData[0]
+    let re: number
+    {
+      // 트랜잭션 시작
+      this.kapedb.exec('BEGIN TRANSACTION')
 
-          // UPDATE 작업 수행
-          const query = `DELETE FROM BookMark_mapper 
+      re = 0
+      try {
+        const bookmarkmapper = insertData[0]
+
+        // UPDATE 작업 수행
+        const query = `DELETE FROM BookMark_mapper 
                           WHERE b_id = ? AND b_tableName = ? AND will_delete = 1
                           `
-          const stmt = this.kapedb.prepare(query)
-          const info = stmt.run(
-          bookmarkmapper._id,
-          bookmarkmapper._tableName
-          )
+        const stmt = this.kapedb.prepare(query)
+        const info = stmt.run(bookmarkmapper._id, bookmarkmapper._tableName)
 
-          if (info.changes > 0) {
-            re++
-          } else {
-            re++ // insert or ignore into 문에 의한 예외 처리
-          }
-          
-          this.kapedb.exec('COMMIT')
-          return re
-        } catch (err) {
-          this.kapedb.exec('ROLLBACK')
-          console.error('DoWillDelBookMarkMapper 중 오류 발생:', err)
-          return -1
+        if (info.changes > 0) {
+          re++
+        } else {
+          re++ // insert or ignore into 문에 의한 예외 처리
         }
+
+        this.kapedb.exec('COMMIT')
+        return re
+      } catch (err) {
+        this.kapedb.exec('ROLLBACK')
+        console.error('DoWillDelBookMarkMapper 중 오류 발생:', err)
+        return -1
       }
     }
+  }
 
   /**
    * bookmakr_mapper 테이블에 데이터를 입력하는 것
@@ -3804,7 +3775,7 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
     const checkRows = Array.from(rowsMap.values())
     return checkRows
   }
-  
+
   /**
    * searchOption을 주면 sync로 DB 조회를 수행하게 한다.
    * 반드시 WorkerThread를 기동하여 수행하게 하여야 한다. - 어떤 질의는 시간이 많이 걸리기 때문이다.
@@ -3896,13 +3867,12 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
         if (noTimeFlag === false) {
           const controlCharsRegex = /[\x00-\x1F\x7F]/g
 
-          param_s_time = searchOption.s_time.replace(controlCharsRegex, '')   // add 20240227 특수문자 제거로직 추가
-          param_e_time = searchOption.e_time.replace(controlCharsRegex, '')   // add 20240227 특수문자 제거로직 추가
+          param_s_time = searchOption.s_time.replace(controlCharsRegex, '') // add 20240227 특수문자 제거로직 추가
+          param_e_time = searchOption.e_time.replace(controlCharsRegex, '') // add 20240227 특수문자 제거로직 추가
           etcString += 'time_Seted + '
 
           // 속도에 대한 예외 처리
-          if( eachPageSize > this.TotalSearchDBpageSize)
-            eachPageSize = this.TotalSearchDBpageSize                // add 20240227 개수가 많으면 DB처리가 늦어져서 문제가 된다. 10000
+          if (eachPageSize > this.TotalSearchDBpageSize) eachPageSize = this.TotalSearchDBpageSize // add 20240227 개수가 많으면 DB처리가 늦어져서 문제가 된다. 10000
         }
 
         if (searchOption.orFlag) {
@@ -6484,7 +6454,9 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
       insertCreateDateInfo.run('second_create_datetime', formattedDateTime)
 
       // 무조건 생성이 되는 정보 triage key add 2024.02.23
-      const insertCreateDateInfoTriageInfo = this.destKapedb.prepare(`insert or replace into Case_Info (key, value) values ('triage', '')`)
+      const insertCreateDateInfoTriageInfo = this.destKapedb.prepare(
+        `insert or replace into Case_Info (key, value) values ('triage', '')`
+      )
       insertCreateDateInfoTriageInfo.run()
 
       //////////////////////////////////////////////////////////////////
@@ -6957,11 +6929,11 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
           workbook.Sheets[worksheetName] = newWorksheet
 
           // 파일 이름에서 디렉토리 정보 추출
-          const dirPath = path.dirname(filename);
+          const dirPath = path.dirname(filename)
 
           // 추출된 디렉토리가 없다면, 생성하게 한다.
           if (!fs.existsSync(dirPath)) {
-            fs.mkdirSync(dirPath, { recursive: true });
+            fs.mkdirSync(dirPath, { recursive: true })
           }
 
           xlsx.writeFile(workbook, filename)
@@ -7101,7 +7073,6 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
           await this.makeSelectImageDBReportListenerByTool(param, (_status: { state: string; percent: number }) => {
             listener(_status)
           })
-
         } else {
           this.progressStatus = {
             state: 'T002',
@@ -7147,51 +7118,51 @@ async asyncDeleteBookMarkMapper(deleteData: DB_BOOKMARK_MAPPER_INFO[]): Promise<
    * Case System Info 테이블 정보 -- RECmd_Batch_SPO_All_Execute_Command_Output 검사 시스템 정보가 엑셀에 필요 없다. 20240202 from 대검 오중경수사관
    * @param param , app실행위치와 엑셀파일위치, 선별이미지DB파일 위치 를 포함하고 있음
    * @param listener : 완료 시, caller에세 전달할 정보
-   * @returns 
+   * @returns
    */
   async makeSelectImageDBReportListenerByTool(
     param: DB_COPY_CMD,
     listener: (_status: { state: string; percent: number }) => void
   ) {
-
     this.progressStatus = {
       state: 'DB => XLSX START ',
       percent: 990
-    };
+    }
     listener(this.progressStatus)
 
     try {
       // shell : ture 로 수행하기 때문에, 공백이 인자 구분자로 인식된다. 따라서, 인자 구분을 위해 " " 로 묶어 주어야 한다.
-      const dbSelectReportName = `"${path.join(param.selectCaseFullXlsxFileName)}"`  // 엑셀파일명 절대 경로 포함
-      const dbFileName = `"${path.join(param.copyDBPathFullFileName)}"`              // 선별이미지 DB 파일명
-      const jsonFileName = `"${path.join(param.appPath, 'resources', 'evidence_data.json')}"`  // 선별이미지를 추출할 테이블 정보 및 컬럼 정보
+      const dbSelectReportName = `"${path.join(param.selectCaseFullXlsxFileName)}"` // 엑셀파일명 절대 경로 포함
+      const dbFileName = `"${path.join(param.copyDBPathFullFileName)}"` // 선별이미지 DB 파일명
+      const jsonFileName = `"${path.join(param.appPath, 'resources', 'evidence_data.json')}"` // 선별이미지를 추출할 테이블 정보 및 컬럼 정보
 
       const _programPath = `"${path.join(param.appPath, 'resources', 'db2xlsx_convert.exe')}"`
-        
-      const _cpProc = cp.spawnSync(_programPath, [dbSelectReportName, dbFileName, jsonFileName], { encoding: 'utf-8', shell: true })
 
-      if(_cpProc.status === 0 ){
+      const _cpProc = cp.spawnSync(_programPath, [dbSelectReportName, dbFileName, jsonFileName], {
+        encoding: 'utf-8',
+        shell: true
+      })
+
+      if (_cpProc.status === 0) {
         this.progressStatus = {
-                state: '_000',
-                percent: 100
-              };
+          state: '_000',
+          percent: 100
+        }
         listener(this.progressStatus)
       } else {
         this.progressStatus = {
           state: 'T002',
           percent: -1
-        };
+        }
         listener(this.progressStatus)
       }
-
-    } catch(err) {
+    } catch (err) {
       this.progressStatus = {
         state: 'T001',
         percent: -1
-      };
+      }
       listener(this.progressStatus)
     }
-    
   }
 
   makePrintDBTable(param: TABLE_PRT_CMD, listener: (_status: { state: string; percent: number }) => void) {
