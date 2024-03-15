@@ -1,6 +1,7 @@
 <template>
   <div style="border: 1px solid red">
     <h4>ChildView</h4>
+    <div>{{ log }}</div>
     <button @click="showGrandChild">grandChild</button>
     <GrandChild v-show="isShowGrandChild" @grandChildEmitData="sendEmitFromChild" />
   </div>

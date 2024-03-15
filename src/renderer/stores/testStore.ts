@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 export const useTestStore = defineStore('testStore', {
-  state: () => ({ log: ['init'] }),
+  state: () => ({ log: [] }),
   actions: {
     pushLog(param) {
       this.log.push(param)

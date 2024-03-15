@@ -62,19 +62,9 @@ const nowState = ref('')
 const childKeyData = ref('')
 const childValueData = ref('')
 const testStore = useTestStore()
-
 const { log } = storeToRefs(testStore)
 
 provide('parentProvideData', { nowState, seletedData })
-// const parsedData = log.map((item) => item.replace(/\d+/g, ''))
-
-/**
- * 진행되던 모든 설정을 초기화 하는 함수
- */
-function init() {
-  seletData()
-  nowState.value = 'init'
-}
 
 /**
  * DB의 값을 검색하는 함수
@@ -103,7 +93,7 @@ const addData = async (): Promise<void> => {
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS INSERT!!:', re)
     selectData()
-    // testStore.pushLog('addData')
+    testStore.pushLog('addData')
   } else {
     console.log('INSERT FAIL:', re_0)
   }
@@ -121,7 +111,7 @@ const deleteData = async (): Promise<void> => {
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS DELETE!!:', re)
     selectData()
-    // testStore.pushLog('deleteData')
+    testStore.pushLog('deleteData')
   } else {
     console.log('DELETE FAIL:', re_0)
   }
@@ -139,7 +129,7 @@ const updateData = async (): Promise<void> => {
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS UPDATE!!:', re)
     selectData()
-    // testStore.pushLog('updateData')
+    testStore.pushLog('updateData')
   } else {
     console.log('UPDATE FAIL:', re_0)
   }
@@ -223,10 +213,10 @@ onMounted(() => {
           <button @click="showChildSibling">ChildSibling</button>
           <button @click="updateData">Apply</button>
           <button @click="testStore.popLog()">Pop</button>
-          <div>{{ log }}</div>
+          <div>store: {{ log }}</div>
         </div>
         <div>
-          <textarea style="width: 100%; height: 150px" v-model="seletedData"></textarea>
+          <textarea style="width: 100%; height: 75px" v-model="seletedData"></textarea>
         </div>
       </div>
       <ChildView @childEmitData="recieveChildEmitData" v-show="isShowChild" />

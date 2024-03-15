@@ -1,12 +1,13 @@
 <template>
   <div style="border: 1px solid red">
     <h4>ChildSiblingView</h4>
+    <div>store: {{ log }}</div>
     <div class="input-section">
       <label>state:</label>
       <input type="text" v-model="propsState" />
     </div>
     <div class="textarea-section">
-      <textarea readonly style="width: 100%; height: 150px" v-model="propsData"></textarea>
+      <textarea readonly style="width: 100%; height: 75px" v-model="propsData"></textarea>
     </div>
     <div class="input-section">
       <label>Key:</label>
@@ -22,18 +23,20 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits, ref, watch } from 'vue'
+import { useTestStore } from '@renderer/stores/testStore'
+import { storeToRefs } from 'pinia'
 
 const emit = defineEmits(['siblingEmitData'])
 const props = defineProps<{
   seletedData: string
   nowState: string
 }>()
-
 const propsData = ref(props.seletedData)
 const propsState = ref(props.nowState)
 const siblingKey = ref<string>('')
 const siblingValue = ref<string>('')
-
+const testStore = useTestStore()
+const { log } = storeToRefs(testStore)
 const sendEmitToParent = () => {
   emit('siblingEmitData', { siblingKey: siblingKey.value, siblingValue: siblingValue.value })
 }
