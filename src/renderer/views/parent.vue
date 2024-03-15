@@ -11,6 +11,7 @@ import { useRouter } from 'vue-router'
 import { QInput, useQuasar } from 'quasar'
 import { requiredRule } from '@renderer/utils/validationRules'
 import { useUserStore } from '@renderer/stores/userStore'
+import { useTestStore } from '@renderer/stores/testStore'
 import { useSystemStore } from '@renderer/stores/systemStore'
 import { openAlert, openDialog, openError } from '@renderer/composables/useDialog'
 import electronApi from '@renderer/api/electronApi' // ElectronAPI
@@ -31,6 +32,7 @@ import { storeToRefs } from 'pinia'
 import { RFC_2822 } from 'moment'
 import ChildView from './Child.vue'
 import ChildSiblingView from './ChildSibling.vue'
+import { map } from 'lodash'
 
 /**********************************************
  * @description Define variables
@@ -51,7 +53,7 @@ let param: DB_CASEINFO_OPR = {
   data: _data
 }
 let re: String = ''
-const seletedData = ref('fdafsda')
+const seletedData = ref('')
 const keyData = ref('')
 const valueData = ref('')
 const isShowChild = ref(false)
@@ -59,8 +61,12 @@ const isShowChildSibling = ref(false)
 const nowState = ref('')
 const childKeyData = ref('')
 const childValueData = ref('')
+const testStore = useTestStore()
+
+const { log } = storeToRefs(testStore)
 
 provide('parentProvideData', { nowState, seletedData })
+// const parsedData = log.map((item) => item.replace(/\d+/g, ''))
 
 /**
  * 진행되던 모든 설정을 초기화 하는 함수
@@ -97,6 +103,7 @@ const addData = async (): Promise<void> => {
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS INSERT!!:', re)
     selectData()
+    // testStore.pushLog('addData')
   } else {
     console.log('INSERT FAIL:', re_0)
   }
@@ -114,6 +121,7 @@ const deleteData = async (): Promise<void> => {
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS DELETE!!:', re)
     selectData()
+    // testStore.pushLog('deleteData')
   } else {
     console.log('DELETE FAIL:', re_0)
   }
@@ -131,6 +139,7 @@ const updateData = async (): Promise<void> => {
     re = await window.ipcRenderer.invoke(KAPE_OP_CHANNELS.CaseInfoTable, param)
     if (re !== stateError && re !== optionError) console.log('### SUCCESS UPDATE!!:', re)
     selectData()
+    // testStore.pushLog('updateData')
   } else {
     console.log('UPDATE FAIL:', re_0)
   }
@@ -159,7 +168,7 @@ const transformData = (_key: String, _value: String, type: String) => {
  */
 const showChild = () => {
   isShowChild.value = !isShowChild.value
-  console.log('isShowChild 클릭')
+  testStore.pushLog('showChild')
 }
 /**
  * ChildSiblingView를 보여주는 함수
@@ -167,7 +176,7 @@ const showChild = () => {
  */
 const showChildSibling = () => {
   isShowChildSibling.value = !isShowChildSibling.value
-  console.log('isShowChildSibling 클릭')
+  testStore.pushLog('showChildSibling')
 }
 
 /**
@@ -213,6 +222,8 @@ onMounted(() => {
           <button @click="showChild">Child</button>
           <button @click="showChildSibling">ChildSibling</button>
           <button @click="updateData">Apply</button>
+          <button @click="testStore.popLog()">Pop</button>
+          <div>{{ log }}</div>
         </div>
         <div>
           <textarea style="width: 100%; height: 150px" v-model="seletedData"></textarea>

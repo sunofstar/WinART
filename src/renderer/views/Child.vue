@@ -9,7 +9,9 @@
 <script setup lang="ts">
 import GrandChild from './GrandChild.vue'
 import { defineEmits, ref } from 'vue'
+import { useTestStore } from '../stores/testStore'
 
+const testStore = useTestStore()
 const emit = defineEmits(['childEmitData'])
 const isShowGrandChild = ref(false)
 const sendEmitFromChild = (data) => {
@@ -17,5 +19,6 @@ const sendEmitFromChild = (data) => {
 }
 const showGrandChild = () => {
   isShowGrandChild.value = !isShowGrandChild.value
+  testStore.pushLog('showGrandChild')
 }
 </script>

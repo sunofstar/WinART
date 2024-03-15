@@ -6,7 +6,7 @@
       <input type="text" v-model="propsState" />
     </div>
     <div class="textarea-section">
-      <textarea style="width: 100%; height: 150px" v-model="propsData"></textarea>
+      <textarea readonly style="width: 100%; height: 150px" v-model="propsData"></textarea>
     </div>
     <div class="input-section">
       <label>Key:</label>
@@ -44,6 +44,7 @@ watch(
   (newValue) => {
     propsState.value = newValue.nowState
     propsData.value = newValue.seletedData
-  }
+  },
+  { deep: true }
 )
 </script>

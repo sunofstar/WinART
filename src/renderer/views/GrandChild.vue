@@ -6,7 +6,7 @@
       <input type="text" v-model="injectState" />
     </div>
     <div class="textarea-section">
-      <textarea style="width: 100%; height: 150px" v-model="injectData"></textarea>
+      <textarea readonly style="width: 100%; height: 150px" v-model="injectData"></textarea>
     </div>
     <div class="input-section">
       <label>Key:</label>
